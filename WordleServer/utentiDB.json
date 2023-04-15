@@ -24,6 +24,11 @@
       "username": "mirco",
       "password": "pwForte",
       "logged": false
+    },
+    {
+      "username": "novizo",
+      "password": "speranza",
+      "logged": true
     }
   ]
 }

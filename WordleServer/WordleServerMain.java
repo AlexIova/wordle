@@ -12,11 +12,14 @@ public class WordleServerMain {
     private static String pathProp = "./WordleServer/server.properties";
 
     public static void main(String[] args) {
+
+        /* Get properties */
         Properties properties = inProperties(pathProp);
         int SERVER_PORT = Integer.parseInt(properties.getProperty("SERVER_PORT"));
         int THREAD_POOL_SIZE = Integer.parseInt(properties.getProperty("THREAD_POOL_SIZE"));
         ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
 
+        /* Take incoming connections */
         try (ServerSocket serverSocket = new ServerSocket(SERVER_PORT)) {
             System.out.println("TCP Server started on port " + SERVER_PORT);
             while (true) {
@@ -29,6 +32,7 @@ public class WordleServerMain {
         }
     }
 
+    /* Parse and return properties object */
     private static Properties inProperties(String pathProp) {
         Properties properties = new Properties();
         try {

@@ -53,6 +53,18 @@ public class TestJson {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // Now we try to add to the JSON file in an efficient way
+        Utente novizio = new Utente("novizo", "speranza");
+        novizio.changeLogging(true);
+        db.add(novizio);
+        String db2Json = gson.toJson(db);
+        try (FileWriter fileWriter = new FileWriter("./WordleServer/utentiDB.json")) {
+            fileWriter.write(db2Json);
+            System.out.println("JSON 2 successfully written to file.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
