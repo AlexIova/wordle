@@ -1,0 +1,29 @@
+{
+  "utenti": [
+    {
+      "username": "giulio",
+      "password": "pw",
+      "logged": false
+    },
+    {
+      "username": "giovanni",
+      "password": "pw2",
+      "logged": true
+    },
+    {
+      "username": "marco",
+      "password": "pw3",
+      "logged": false
+    },
+    {
+      "username": "paolo",
+      "password": "umpa",
+      "logged": false
+    },
+    {
+      "username": "mirco",
+      "password": "pwForte",
+      "logged": false
+    }
+  ]
+}
