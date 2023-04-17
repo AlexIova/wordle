@@ -5,9 +5,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import com.google.gson.*;
 
-/**
- * WordleServerMain
- */
 public class WordleServerMain {
 
     private static String pathProp = "./WordleServer/server.properties";

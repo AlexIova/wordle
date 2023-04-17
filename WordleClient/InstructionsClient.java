@@ -23,9 +23,10 @@ public class InstructionsClient {
                             break;
                         case 1:
                             System.out.println("Username already exists");
-                            return;
+                            break;
                         case 2:
                             System.out.println("Empty password field");
+                            break;
                         default:
                             System.out.println("Unknown error code");
                             break;
@@ -58,9 +59,13 @@ public class InstructionsClient {
                             break;
                         case 1:
                             System.out.println("Already logged in");
-                            return;
+                            break;
                         case 2:
                             System.out.println("Wrong password");
+                            break;
+                        case 3:
+                            System.out.println("Username not found");
+                            break;
                         default:
                             System.out.println("Unknown error code");
                             break;
@@ -92,7 +97,7 @@ public class InstructionsClient {
                             break;
                         case 1:
                             System.out.println("Not logged in");
-                            return; 
+                            break; 
                         default:
                             System.out.println("Unknown error code");
                             break;

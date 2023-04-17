@@ -33,15 +33,20 @@ public class InstructionsServer {
             if (db.usrExist(username)){
                 Utente user = db.getUser(username);
                 if (user.getPassword().equals(password)){
-                    StatusMsg statusMsg = new StatusMsg(0, "Login successfull");
-                    user.changeLogging(true);
-                    objectOutputStream.writeObject(statusMsg);
+                    if(!user.isLogged()){
+                        StatusMsg statusMsg = new StatusMsg(0, "Login successfull");
+                        user.changeLogging(true);
+                        objectOutputStream.writeObject(statusMsg);
+                    } else {
+                        StatusMsg statusMsg = new StatusMsg(1, "Already logged in");
+                        objectOutputStream.writeObject(statusMsg);
+                    }
                 } else {
-                    StatusMsg statusMsg = new StatusMsg(1, "Wrong password");
+                    StatusMsg statusMsg = new StatusMsg(2, "Wrong password");
                     objectOutputStream.writeObject(statusMsg);
                 }
             } else {
-                StatusMsg statusMsg = new StatusMsg(1, "Username not found");
+                StatusMsg statusMsg = new StatusMsg(3, "Username not found");
                 objectOutputStream.writeObject(statusMsg);
             }
         } catch (IOException e) {
