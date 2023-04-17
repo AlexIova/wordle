@@ -22,6 +22,17 @@ public class UsrDatabase {
         }
     }
 
+    public Utente getUser(String username) {
+        synchronized(this){
+            for (Utente ut : utenti) {
+                if (ut.getUsername().equals(username)) {
+                    return ut;
+                }
+            }
+            return null;
+        }
+    }
+
     @Override
     public String toString() {
         String s = "";

@@ -25,4 +25,9 @@ public class Utente {
     public Boolean isLogged() {
         return logged;
     }
+
+    public String getPassword() {
+        return password;
+    }
+    
 }
