@@ -23,6 +23,9 @@ public class ClientHandler implements Runnable {
                     InstructionsServer.handleRegistration(msg, db, objectOutputStream);
                     System.out.println("Registration finished!");
                     break;
+                case LOGIN:
+                    InstructionsServer.handleLogin(msg, db, objectOutputStream);
+                    break;
                 default:
                     throw new WrongMessageException("Invalid message type");
             }

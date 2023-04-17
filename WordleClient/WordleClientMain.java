@@ -35,7 +35,8 @@ public class WordleClientMain {
                         InstructionsClient.handleRegistration(objectOutputStream, objectInputStream);
                         break;
                     case 2:
-                        System.out.println("Login");
+                        System.out.println("Initiating login handle");
+                        InstructionsClient.handleLogin(objectOutputStream, objectInputStream);
                         break;
                     case 3:
                         System.out.println("Logout");

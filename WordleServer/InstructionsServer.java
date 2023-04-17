@@ -25,4 +25,28 @@ public class InstructionsServer {
         return;
     }
 
+    public static void handleLogin(Messaggio msg, UsrDatabase db, ObjectOutputStream objectOutputStream) {
+        LoginMsg loginMsg = (LoginMsg) msg;
+        String username = loginMsg.getUsername();
+        String password = loginMsg.getPassword();
+        try{
+            if (db.usrExist(username)){
+                Utente user = db.getUser(username);
+                if (user.getPassword().equals(password)){
+                    StatusMsg statusMsg = new StatusMsg(0, "Login successfull");
+                    user.changeLogging(true);
+                    objectOutputStream.writeObject(statusMsg);
+                } else {
+                    StatusMsg statusMsg = new StatusMsg(1, "Wrong password");
+                    objectOutputStream.writeObject(statusMsg);
+                }
+            } else {
+                StatusMsg statusMsg = new StatusMsg(1, "Username not found");
+                objectOutputStream.writeObject(statusMsg);
+            }
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+
 }
