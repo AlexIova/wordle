@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-04-17T07:07:15.422Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.1.2 Chrome/106.0.5249.199 Electron/21.4.3 Safari/537.36" etag="Cha5qw77z8-xLI85gMm3" version="21.1.2" type="device">
+<mxfile host="Electron" modified="2023-04-17T10:51:16.965Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.1.2 Chrome/106.0.5249.199 Electron/21.4.3 Safari/537.36" etag="J9wymvlp3dsmIrsY7zZX" version="21.1.2" type="device">
   <diagram name="Generale" id="a9Qo6xG5ZnCa2RLUOLxb">
-    <mxGraphModel dx="1235" dy="747" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
+    <mxGraphModel dx="875" dy="529" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -11,7 +11,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="KQCeedgBMzMV0l_ZwHwV-215" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.rect;fillColor2=none;strokeWidth=1;size=20;indent=5;" parent="1" vertex="1">
-          <mxGeometry x="1880" y="1590" width="550" height="330" as="geometry" />
+          <mxGeometry x="1880" y="1590" width="360" height="220" as="geometry" />
         </mxCell>
         <mxCell id="KQCeedgBMzMV0l_ZwHwV-148" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.rect;fillColor2=none;strokeWidth=1;size=20;indent=5;" parent="1" vertex="1">
           <mxGeometry x="100" y="595" width="1020" height="575" as="geometry" />
@@ -286,7 +286,7 @@
           <mxGeometry x="2290" y="1190" width="160" height="30" as="geometry" />
         </mxCell>
         <mxCell id="KQCeedgBMzMV0l_ZwHwV-153" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;words.txt&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
-          <mxGeometry x="2095" y="1809" width="180" height="40" as="geometry" />
+          <mxGeometry x="2250" y="1960" width="180" height="40" as="geometry" />
         </mxCell>
         <mxCell id="KQCeedgBMzMV0l_ZwHwV-155" value="PlayWordle" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1160" y="1760" width="140" height="78" as="geometry" />
@@ -402,7 +402,7 @@
         <mxCell id="KQCeedgBMzMV0l_ZwHwV-209" value="+ GetWord(): String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="KQCeedgBMzMV0l_ZwHwV-207" vertex="1">
           <mxGeometry y="52" width="185" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="KQCeedgBMzMV0l_ZwHwV-211" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="KQCeedgBMzMV0l_ZwHwV-209" target="KQCeedgBMzMV0l_ZwHwV-153" edge="1">
+        <mxCell id="KQCeedgBMzMV0l_ZwHwV-211" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.686;entryY=-0.067;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="KQCeedgBMzMV0l_ZwHwV-209" target="Rvfiquh89zYh_bdHmMgh-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="KQCeedgBMzMV0l_ZwHwV-214" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="KQCeedgBMzMV0l_ZwHwV-26" target="KQCeedgBMzMV0l_ZwHwV-207" edge="1">
@@ -431,6 +431,33 @@
         </mxCell>
         <mxCell id="KQCeedgBMzMV0l_ZwHwV-225" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="1" source="KQCeedgBMzMV0l_ZwHwV-179" target="KQCeedgBMzMV0l_ZwHwV-218" edge="1">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Rvfiquh89zYh_bdHmMgh-6" value="WordDB" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1890" width="185" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="Rvfiquh89zYh_bdHmMgh-7" value="+ wordList: List&amp;lt;String&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="Rvfiquh89zYh_bdHmMgh-6">
+          <mxGeometry y="26" width="185" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Rvfiquh89zYh_bdHmMgh-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.609;entryY=0.029;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Rvfiquh89zYh_bdHmMgh-7" target="KQCeedgBMzMV0l_ZwHwV-153">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Rvfiquh89zYh_bdHmMgh-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.524;entryY=1.096;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Rvfiquh89zYh_bdHmMgh-14" target="Rvfiquh89zYh_bdHmMgh-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Rvfiquh89zYh_bdHmMgh-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.485;entryY=0.029;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Rvfiquh89zYh_bdHmMgh-14" target="Rvfiquh89zYh_bdHmMgh-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Rvfiquh89zYh_bdHmMgh-14" value="Qui in mezzo ci dovrà essere un collegamento.&lt;br&gt;I thread accederanno a wordDB per vedere se le parole sono giuste e per controllare in generale.&lt;br&gt;NON ha bisogno di essere sincronizzato." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
+          <mxGeometry x="1880" y="1970" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Rvfiquh89zYh_bdHmMgh-19" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="1760" y="2130" width="600" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="Rvfiquh89zYh_bdHmMgh-10" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.rect;fillColor2=none;strokeWidth=1;size=20;indent=5;" vertex="1" parent="Rvfiquh89zYh_bdHmMgh-19">
+          <mxGeometry width="600" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="Rvfiquh89zYh_bdHmMgh-11" value="&amp;lt;&amp;lt;per connection thread&amp;gt;&amp;gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;" vertex="1" parent="Rvfiquh89zYh_bdHmMgh-19">
+          <mxGeometry x="180" width="240" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
