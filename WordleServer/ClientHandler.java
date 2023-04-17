@@ -26,6 +26,9 @@ public class ClientHandler implements Runnable {
                 case LOGIN:
                     InstructionsServer.handleLogin(msg, db, objectOutputStream);
                     break;
+                case LOGOUT:
+                    InstructionsServer.handleLogout(msg, db, objectOutputStream);
+                    break;
                 default:
                     throw new WrongMessageException("Invalid message type");
             }

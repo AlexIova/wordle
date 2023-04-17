@@ -49,4 +49,22 @@ public class InstructionsServer {
         }
     }
 
+    public static void handleLogout(Messaggio msg, UsrDatabase db, ObjectOutputStream objectOutputStream) {
+        LogoutMsg logoutMsg = (LogoutMsg) msg;
+        String username = logoutMsg.getUsername();
+        try{
+            if(db.usrExist(username)){
+                Utente user = db.getUser(username);
+                user.changeLogging(false);
+                StatusMsg statusMsg = new StatusMsg(0, "Logout successfull");
+                objectOutputStream.writeObject(statusMsg);
+            } else {
+                StatusMsg statusMsg = new StatusMsg(1, "Username not found");
+                objectOutputStream.writeObject(statusMsg);
+            }
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+
 }
