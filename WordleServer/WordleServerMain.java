@@ -25,6 +25,9 @@ public class WordleServerMain {
         UsrDatabase usrDB = restoreSession(nameUsrDB);
         assert(usrDB != null);
 
+        /* Hook for saving before exiting */
+        Runtime.getRuntime().addShutdownHook(new Thread(new ExitHandler(usrDB)));
+
         /* Take incoming connections */
         try (ServerSocket serverSocket = new ServerSocket(SERVER_PORT)) {
             System.out.println("TCP Server started on port " + SERVER_PORT);
@@ -66,63 +69,6 @@ public class WordleServerMain {
             return usrDB;
         } catch (IOException e) { e.printStackTrace(); }
         return null;
-    }
-
-    /* Handling of the clients */
-    public static class ClientHandler implements Runnable {
-        private InputStream inputStream;
-        private OutputStream outputStream;
-        private UsrDatabase db;
-
-        public ClientHandler(InputStream in, OutputStream out, UsrDatabase db) {
-            this.inputStream = in;
-            this.outputStream = out;
-            this.db = db;
-        }
-
-        @Override
-        public void run() {
-            try {
-                ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-                Messaggio msg = (Messaggio) objectInputStream.readObject();
-                System.out.println(msg);
-                switch (msg.getType()) {
-                    case REGISTER:
-                        handleRegistration(msg, db, objectOutputStream);
-                        System.out.println("Registration finished!");
-                        break;
-                    default:
-                        throw new WrongMessageException("Invalid message type");
-                }
-            } catch (IOException | ClassNotFoundException | WrongMessageException e) { 
-                System.err.println("Error: " + e.getMessage());
-            }
-        }
-
-    }
-
-    private static void handleRegistration(Messaggio msg, UsrDatabase db, ObjectOutputStream objectOutputStream) {
-        RegisterMsg registerMsg = (RegisterMsg) msg;
-        String password = registerMsg.getPassword();
-        try{
-            if (password.isEmpty()){
-                StatusMsg statusMsg = new StatusMsg(2, "Password field is empty");
-                objectOutputStream.writeObject(statusMsg);
-            }
-            String username = registerMsg.getUsername();
-            if(db.usrExist(username)){
-                StatusMsg statusMsg = new StatusMsg(1, "Username already exists");
-                objectOutputStream.writeObject(statusMsg);
-            } else {
-                db.add(new Utente(username, password));
-                StatusMsg statusMsg = new StatusMsg(0, "Registration successfull");
-                objectOutputStream.writeObject(statusMsg);
-            }
-        } catch (IOException e) {
-            System.err.println("Error: " + e.getMessage());
-        }
-        return;
     }
 
 }

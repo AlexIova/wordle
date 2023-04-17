@@ -8,7 +8,7 @@
     {
       "username": "giovanni",
       "password": "pw2",
-      "logged": true
+      "logged": false
     },
     {
       "username": "marco",
@@ -28,7 +28,32 @@
     {
       "username": "novizo",
       "password": "speranza",
-      "logged": true
+      "logged": false
+    },
+    {
+      "username": "ewamke",
+      "password": "wsda",
+      "logged": false
+    },
+    {
+      "username": "topo",
+      "password": "gigio",
+      "logged": false
+    },
+    {
+      "username": "gatto",
+      "password": "silvestro",
+      "logged": false
+    },
+    {
+      "username": "Enrico",
+      "password": "Fermi",
+      "logged": false
+    },
+    {
+      "username": "Sergio",
+      "password": "Mattarella",
+      "logged": false
     }
   ]
 }
