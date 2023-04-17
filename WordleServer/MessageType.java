@@ -3,6 +3,7 @@ enum MessageType {
     LOGIN,
     LOGOUT,
     PLAY,
+    GAME,
     SHARE,
     SHOWSHARE,
     STATUS,
