@@ -16,18 +16,23 @@ public class ClientHandler implements Runnable {
         try {
             ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-            Messaggio msg = (Messaggio) objectInputStream.readObject();
-            System.out.println(msg);
-            switch (msg.getType()) {
-                case REGISTER:
-                    InstructionsServer.handleRegistration(msg, db, objectOutputStream);
-                    System.out.println("Registration finished!");
-                    break;
-                case LOGIN:
-                    InstructionsServer.handleLogin(msg, db, objectOutputStream);
-                    break;
-                default:
-                    throw new WrongMessageException("Invalid message type");
+            while(true){
+                Messaggio msg = (Messaggio) objectInputStream.readObject();
+                System.out.println(msg);
+                switch (msg.getType()) {
+                    case REGISTER:
+                        InstructionsServer.handleRegistration(msg, db, objectOutputStream);
+                        System.out.println("Registration finished!");
+                        break;
+                    case LOGIN:
+                        InstructionsServer.handleLogin(msg, db, objectOutputStream);
+                        break;
+                    case LOGOUT:
+                        InstructionsServer.handleLogout(msg, db, objectOutputStream);
+                        break;
+                    default:
+                        throw new WrongMessageException("Invalid message type");
+                }
             }
         } catch (IOException | ClassNotFoundException | WrongMessageException e) { 
             System.err.println("Error: " + e.getMessage());

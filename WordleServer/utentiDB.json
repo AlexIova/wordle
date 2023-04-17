@@ -38,7 +38,7 @@
     {
       "username": "topo",
       "password": "gigio",
-      "logged": true
+      "logged": false
     },
     {
       "username": "gatto",
@@ -53,6 +53,151 @@
     {
       "username": "Sergio",
       "password": "Mattarella",
+      "logged": false
+    },
+    {
+      "username": "sciarpa",
+      "password": "cappello",
+      "logged": false
+    },
+    {
+      "username": "power",
+      "password": "bank",
+      "logged": false
+    },
+    {
+      "username": "bank",
+      "password": "power",
+      "logged": false
+    },
+    {
+      "username": "compiut",
+      "password": "er",
+      "logged": false
+    },
+    {
+      "username": "tast",
+      "password": "iera",
+      "logged": false
+    },
+    {
+      "username": "ewq",
+      "password": "qef ddsa",
+      "logged": false
+    },
+    {
+      "username": "ciao",
+      "password": "bimbi",
+      "logged": false
+    },
+    {
+      "username": "das",
+      "password": "auto",
+      "logged": false
+    },
+    {
+      "username": "panta",
+      "password": "loni",
+      "logged": false
+    },
+    {
+      "username": "pa",
+      "password": "nta",
+      "logged": false
+    },
+    {
+      "username": "guga",
+      "password": "gaga",
+      "logged": false
+    },
+    {
+      "username": "rota",
+      "password": "rota",
+      "logged": false
+    },
+    {
+      "username": "ewads",
+      "password": "qewq3e",
+      "logged": false
+    },
+    {
+      "username": "dsapoeqr",
+      "password": "qererqmj",
+      "logged": false
+    },
+    {
+      "username": "rwkqr",
+      "password": "fwfff",
+      "logged": false
+    },
+    {
+      "username": "popi",
+      "password": "popi",
+      "logged": false
+    },
+    {
+      "username": "gianni",
+      "password": "12343",
+      "logged": false
+    },
+    {
+      "username": "c",
+      "password": "wea",
+      "logged": false
+    },
+    {
+      "username": "bat",
+      "password": "man",
+      "logged": false
+    },
+    {
+      "username": "basta",
+      "password": "aiuto",
+      "logged": false
+    },
+    {
+      "username": "sper",
+      "password": "iamo",
+      "logged": false
+    },
+    {
+      "username": "chupa",
+      "password": "cabra",
+      "logged": false
+    },
+    {
+      "username": "troisi",
+      "password": "massimo",
+      "logged": false
+    },
+    {
+      "username": "pippo",
+      "password": "pluto",
+      "logged": false
+    },
+    {
+      "username": "pluto",
+      "password": "polpo",
+      "logged": false
+    },
+    {
+      "username": "che bello",
+      "password": "ora va",
+      "logged": false
+    },
+    {
+      "username": "qui",
+      "password": "quo",
+      "logged": false
+    },
+    {
+      "username": "primo",
+      "password": "levi",
+      "logged": true
+    },
+    {
+      "username": "secondo",
+      "password": "leva",
       "logged": false
     }
   ]

@@ -33,13 +33,36 @@ public class InstructionsServer {
             if (db.usrExist(username)){
                 Utente user = db.getUser(username);
                 if (user.getPassword().equals(password)){
-                    StatusMsg statusMsg = new StatusMsg(0, "Login successfull");
-                    user.changeLogging(true);
-                    objectOutputStream.writeObject(statusMsg);
+                    if(!user.isLogged()){
+                        StatusMsg statusMsg = new StatusMsg(0, "Login successfull");
+                        user.changeLogging(true);
+                        objectOutputStream.writeObject(statusMsg);
+                    } else {
+                        StatusMsg statusMsg = new StatusMsg(1, "Already logged in");
+                        objectOutputStream.writeObject(statusMsg);
+                    }
                 } else {
-                    StatusMsg statusMsg = new StatusMsg(1, "Wrong password");
+                    StatusMsg statusMsg = new StatusMsg(2, "Wrong password");
                     objectOutputStream.writeObject(statusMsg);
                 }
+            } else {
+                StatusMsg statusMsg = new StatusMsg(3, "Username not found");
+                objectOutputStream.writeObject(statusMsg);
+            }
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+
+    public static void handleLogout(Messaggio msg, UsrDatabase db, ObjectOutputStream objectOutputStream) {
+        LogoutMsg logoutMsg = (LogoutMsg) msg;
+        String username = logoutMsg.getUsername();
+        try{
+            if(db.usrExist(username)){
+                Utente user = db.getUser(username);
+                user.changeLogging(false);
+                StatusMsg statusMsg = new StatusMsg(0, "Logout successfull");
+                objectOutputStream.writeObject(statusMsg);
             } else {
                 StatusMsg statusMsg = new StatusMsg(1, "Username not found");
                 objectOutputStream.writeObject(statusMsg);
