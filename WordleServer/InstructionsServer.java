@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class Instructions {
+public class InstructionsServer {
     
     public static void handleRegistration(Messaggio msg, UsrDatabase db, ObjectOutputStream objectOutputStream) {
         RegisterMsg registerMsg = (RegisterMsg) msg;
