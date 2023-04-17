@@ -25,6 +25,9 @@ public class WordleServerMain {
         UsrDatabase usrDB = restoreSession(nameUsrDB);
         assert(usrDB != null);
 
+        /* Hook for saving before exiting */
+        Runtime.getRuntime().addShutdownHook(new Thread(new ExitHandler(usrDB)));
+
         /* Take incoming connections */
         try (ServerSocket serverSocket = new ServerSocket(SERVER_PORT)) {
             System.out.println("TCP Server started on port " + SERVER_PORT);

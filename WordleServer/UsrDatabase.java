@@ -22,7 +22,6 @@ public class UsrDatabase {
         }
     }
 
-    /* toString prints all the users in list */
     @Override
     public String toString() {
         String s = "";

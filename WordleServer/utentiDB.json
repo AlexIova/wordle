@@ -29,6 +29,21 @@
       "username": "novizo",
       "password": "speranza",
       "logged": true
+    },
+    {
+      "username": "ewamke",
+      "password": "wsda",
+      "logged": false
+    },
+    {
+      "username": "topo",
+      "password": "gigio",
+      "logged": false
+    },
+    {
+      "username": "gatto",
+      "password": "silvestro",
+      "logged": false
     }
   ]
 }
