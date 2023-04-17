@@ -20,7 +20,7 @@ public class ClientHandler implements Runnable {
             System.out.println(msg);
             switch (msg.getType()) {
                 case REGISTER:
-                    Instructions.handleRegistration(msg, db, objectOutputStream);
+                    InstructionsServer.handleRegistration(msg, db, objectOutputStream);
                     System.out.println("Registration finished!");
                     break;
                 default:
