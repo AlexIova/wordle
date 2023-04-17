@@ -199,6 +199,16 @@
       "username": "secondo",
       "password": "leva",
       "logged": false
+    },
+    {
+      "username": "pasticcio",
+      "password": "ciccio",
+      "logged": true
+    },
+    {
+      "username": "ciccio",
+      "password": "pasticcio",
+      "logged": false
     }
   ]
 }
