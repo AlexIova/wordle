@@ -1,16 +1,12 @@
-
-
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 import java.io.IOException;
 
 import com.google.gson.*;
-import com.google.gson.stream.*;
 
 public class TestJson {
     
-    public static void main(String[] args) {
-        Database db = new Database();
+    public static void main(String[] args) throws IOException {
+        UsrDatabase db = new UsrDatabase();
         Utente giulio = new Utente("giulio", "pw");
         Utente giovanni = new Utente("giovanni", "pw2");
         Utente marco = new Utente("marco", "pw3");
@@ -23,9 +19,10 @@ public class TestJson {
         db.add(paolo);
         db.add(mirco);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String dbJson = gson.toJson(db);
-        System.out.println(dbJson);
+        // String dbJson = gson.toJson(db);
+        // System.out.println(dbJson);
 
+        /* 
         // Now we write the string to a file
         try (FileWriter fileWriter = new FileWriter("./WordleServer/utentiDB.json")) {
             fileWriter.write(dbJson);
@@ -65,6 +62,13 @@ public class TestJson {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        */
+
+        Gson giacomoson = new Gson();
+        FileReader reader = new FileReader("./WordleServer/utentiDB.json");
+        UsrDatabase db2 = giacomoson.fromJson(reader, UsrDatabase.class);
+        reader.close();
+        System.out.println(db2);
     }
 
 }

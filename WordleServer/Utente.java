@@ -15,7 +15,7 @@ public class Utente {
     }
 
     public String toString(){
-        return this.username + this.password + this.logged.toString();
+        return this.username + "\t " + this.password + "\t " + this.logged.toString();
     }
 
     public String getUsername() {
