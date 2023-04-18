@@ -24,6 +24,24 @@ public class WordleServerMain {
 
         /* Hook for saving before exiting */
         Runtime.getRuntime().addShutdownHook(new Thread(new ExitHandler(usrDB)));
+        
+        /* Start thread for changing words periodically */
+        int time = Integer.parseInt(properties.getProperty("TIME_WORD"));
+        String pathWords = properties.getProperty("PATH_WORDS_DB");
+        WordPicker wp = new WordPicker(pathWords);
+        threadPool.execute(new ChangeThread(time, wp)); 
+        /*
+         * Adesso questo è solo un test
+         */
+        for (int i = 0; i < 50; i++) {
+            System.out.println(wp.getSecretWord());
+            try {
+                Thread.sleep(700);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        
 
         /* Take incoming connections */
         try (ServerSocket serverSocket = new ServerSocket(SERVER_PORT)) {
