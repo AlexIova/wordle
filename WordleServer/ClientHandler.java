@@ -33,6 +33,9 @@ public class ClientHandler implements Runnable {
                             usrLogged = null;
                         }
                         break;
+                    case PLAY:
+                        InstructionsServer.handlePlay(msg, db, objectOutputStream, objectInputStream);
+                        break;
                     default:
                         throw new WrongMessageException("Invalid message type");
                 }

@@ -209,6 +209,11 @@
       "username": "ciccio",
       "password": "pasticcio",
       "logged": false
+    },
+    {
+      "username": "borraccia",
+      "password": "acqua",
+      "logged": true
     }
   ]
 }

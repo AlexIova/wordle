@@ -121,7 +121,10 @@ public class InstructionsClient {
                         game(objectOutputStream, objectInputStream, scanner);
                         break;
                     case 1:
-                        System.out.println("Server error, unable to play");
+                        System.out.println("Username does not exist");
+                        break;
+                    case 2:
+                        System.out.println("User not logged in");
                         break;
                     default:
                         System.out.println("Unknown error code");
@@ -135,7 +138,7 @@ public class InstructionsClient {
     }
 
     private static void game(ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream, Scanner scanner){
-        ;
+        System.out.println("WE ARE READY!");
     }
 
 }

@@ -76,4 +76,31 @@ public class InstructionsServer {
         return false;
     }
 
+    public static void handlePlay(Messaggio msg, UsrDatabase db, ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream) {
+        PlayMsg playMsg = (PlayMsg) msg;
+        String username = playMsg.getUsername();
+        try{
+            if(!db.usrExist(username)){
+                StatusMsg statusMsg = new StatusMsg(1, "Username not found");
+                objectOutputStream.writeObject(statusMsg);
+                return;             
+            }
+            if(!db.getUser(username).isLogged()){
+                StatusMsg statusMsg = new StatusMsg(2, "Not logged in");
+                objectOutputStream.writeObject(statusMsg);
+                return;
+            }
+            StatusMsg statusMsg = new StatusMsg(0, "Play successfull");
+            objectOutputStream.writeObject(statusMsg);
+            playWordle(db, objectOutputStream, objectInputStream);
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+
+
+    private static void playWordle(UsrDatabase db, ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream) {
+        System.out.println("WE ARE READY!");
+    }
+
 }
