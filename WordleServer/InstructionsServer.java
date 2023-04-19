@@ -104,6 +104,8 @@ public class InstructionsServer {
         String secretWord = wp.getSecretWord();
         String guessedWord = null;
         int iter = 0;
+        GameMsg resGame = null;
+        System.out.println("SECRET WORD: " + secretWord);       // Just for debug, delete after
         while(!secretWord.equals(guessedWord) || iter < 12){
             try{
                 iter++;
@@ -114,10 +116,19 @@ public class InstructionsServer {
                 PlayMsg playMsg = (PlayMsg) msg;
                 assert(playMsg.getUsername().equals(db.getUser(playMsg.getUsername()).getUsername()));
                 guessedWord = playMsg.getGuessedWord();
-                if(guessedWord.equals(secretWord)){
-                    System.out.println("YOU WON!");
+                if(guessedWord.equals(secretWord)){                                 // Won
+                    resGame = new GameMsg("", 1);
+                    System.out.println("PLAYER WON!");
+                } else if(guessedWord.length() != 10){                              // Word must have 10 characters
+                    resGame = new GameMsg("", 4);
+                    iter--;
+                } else if(!wp.inDb(guessedWord)){                                   // Word not in dictionary
+                    resGame = new GameMsg("", 3);
+                    iter--;
+                } else {
+                    resGame = new GameMsg(buildRes(secretWord, guessedWord), 0);    // Normal game
                 }
-                objectOutputStream.writeObject(buildRes(secretWord, guessedWord));
+                objectOutputStream.writeObject(resGame);
             } catch (IOException | ClassNotFoundException | WrongMessageException e) { System.err.println("Error: " + e.getMessage()); }
         }
     }

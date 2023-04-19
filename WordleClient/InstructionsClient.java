@@ -141,18 +141,45 @@ public class InstructionsClient {
         System.out.println("WE ARE READY!");
         Boolean end = false;
         String guess = null;
-        String res = null;
+        Messaggio res = null;
+        List<String> log = new ArrayList<String>();
         while(!end){
             guess = scanner.nextLine();
             PlayMsg guessMsg = new PlayMsg(username, guess);
+            log.add(guess);
             try {
                 objectOutputStream.writeObject(guessMsg);
-                res = (String) objectInputStream.readObject();
-                System.out.println(res);
-            } catch (ClassNotFoundException | IOException e) {
+                res = (Messaggio) objectInputStream.readObject();
+                if(!(res.getType() == MessageType.GAME)){
+                    throw new WrongMessageException("Invalid reply");
+                }
+                GameMsg gameRes = (GameMsg) res;
+                switch (gameRes.getCode()) {
+                    case 0:             // All ok
+                        log.add(gameRes.getRes());
+                        System.out.println("\n---------------");
+                        for(String s : log){
+                            System.out.println(s);
+                        }
+                        break;
+                    case 1:             // Game won
+                        System.out.println("Game won");
+                        break;
+                    case 2:             // Word must be of 10 characters
+                        System.out.println("Word must be of 10 characters");
+                        break;
+                    case 3:             // Word not in dictionary
+                        System.out.println("Word not in dictionary");
+                        break;
+                    default:
+                        System.out.println("Unknown code");
+                        break;
+                }
+            } catch (ClassNotFoundException | IOException | WrongMessageException e) {
                 e.printStackTrace();
             }
         }
+        System.out.println("Fine gioco");
     }
 
 }
