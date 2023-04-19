@@ -4,12 +4,15 @@ public class ClientHandler implements Runnable {
     private InputStream inputStream;
     private OutputStream outputStream;
     private UsrDatabase db;
-    String usrLogged = null;
+    private WordPicker wp;
+    
+    private String usrLogged = null;
 
-    public ClientHandler(InputStream in, OutputStream out, UsrDatabase db) {
+    public ClientHandler(InputStream in, OutputStream out, UsrDatabase db, WordPicker wp) {
         this.inputStream = in;
         this.outputStream = out;
         this.db = db;
+        this.wp = wp;
     }
 
     @Override
@@ -34,7 +37,9 @@ public class ClientHandler implements Runnable {
                         }
                         break;
                     case PLAY:
-                        InstructionsServer.handlePlay(msg, db, objectOutputStream, objectInputStream);
+                        if(db.usrExist(usrLogged) && db.getUser(usrLogged).isLogged()){
+                            InstructionsServer.handlePlay(msg, db, objectOutputStream, objectInputStream, wp);
+                        }
                         break;
                     default:
                         throw new WrongMessageException("Invalid message type");

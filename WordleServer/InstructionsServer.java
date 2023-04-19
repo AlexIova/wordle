@@ -76,7 +76,7 @@ public class InstructionsServer {
         return false;
     }
 
-    public static void handlePlay(Messaggio msg, UsrDatabase db, ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream) {
+    public static void handlePlay(Messaggio msg, UsrDatabase db, ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream, WordPicker wp) {
         PlayMsg playMsg = (PlayMsg) msg;
         String username = playMsg.getUsername();
         try{
@@ -92,15 +92,48 @@ public class InstructionsServer {
             }
             StatusMsg statusMsg = new StatusMsg(0, "Play successfull");
             objectOutputStream.writeObject(statusMsg);
-            playWordle(db, objectOutputStream, objectInputStream);
+            playWordle(db, objectOutputStream, objectInputStream, wp);
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
         }
     }
 
 
-    private static void playWordle(UsrDatabase db, ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream) {
+    private static void playWordle(UsrDatabase db, ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream, WordPicker wp) {
         System.out.println("WE ARE READY!");
+        String secretWord = wp.getSecretWord();
+        String guessedWord = null;
+        int iter = 0;
+        while(!secretWord.equals(guessedWord) || iter < 12){
+            try{
+                iter++;
+                Messaggio msg = (Messaggio) objectInputStream.readObject();
+                if(!(msg.getType() == MessageType.PLAY)){
+                    throw new WrongMessageException("Invalid message type");
+                }
+                PlayMsg playMsg = (PlayMsg) msg;
+                assert(playMsg.getUsername().equals(db.getUser(playMsg.getUsername()).getUsername()));
+                guessedWord = playMsg.getGuessedWord();
+                if(guessedWord.equals(secretWord)){
+                    System.out.println("YOU WON!");
+                }
+                objectOutputStream.writeObject(buildRes(secretWord, guessedWord));
+            } catch (IOException | ClassNotFoundException | WrongMessageException e) { System.err.println("Error: " + e.getMessage()); }
+        }
+    }
+
+    private static String buildRes(String secretWord, String guessedWord) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < secretWord.length(); i++) {
+            if (secretWord.charAt(i) == guessedWord.charAt(i)) {
+                result.append("+");
+            } else if (guessedWord.indexOf(secretWord.charAt(i)) != -1) {
+                result.append("?");
+            } else {
+                result.append("X");
+            }
+        }
+        return result.toString();
     }
 
 }

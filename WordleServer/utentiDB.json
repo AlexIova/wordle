@@ -213,6 +213,11 @@
     {
       "username": "borraccia",
       "password": "acqua",
+      "logged": false
+    },
+    {
+      "username": "gomma",
+      "password": "arabica",
       "logged": true
     }
   ]

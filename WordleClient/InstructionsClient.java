@@ -118,7 +118,7 @@ public class InstructionsClient {
                 switch (statusMsg.getCode()) {
                     case 0:
                         System.out.println("We are ready to play!");
-                        game(objectOutputStream, objectInputStream, scanner);
+                        game(objectOutputStream, objectInputStream, scanner, username);
                         break;
                     case 1:
                         System.out.println("Username does not exist");
@@ -137,8 +137,22 @@ public class InstructionsClient {
 
     }
 
-    private static void game(ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream, Scanner scanner){
+    private static void game(ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream, Scanner scanner, String username){
         System.out.println("WE ARE READY!");
+        Boolean end = false;
+        String guess = null;
+        String res = null;
+        while(!end){
+            guess = scanner.nextLine();
+            PlayMsg guessMsg = new PlayMsg(username, guess);
+            try {
+                objectOutputStream.writeObject(guessMsg);
+                res = (String) objectInputStream.readObject();
+                System.out.println(res);
+            } catch (ClassNotFoundException | IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }
