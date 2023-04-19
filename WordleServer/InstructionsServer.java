@@ -25,7 +25,7 @@ public class InstructionsServer {
         return;
     }
 
-    public static void handleLogin(Messaggio msg, UsrDatabase db, ObjectOutputStream objectOutputStream) {
+    public static String handleLogin(Messaggio msg, UsrDatabase db, ObjectOutputStream objectOutputStream) {
         LoginMsg loginMsg = (LoginMsg) msg;
         String username = loginMsg.getUsername();
         String password = loginMsg.getPassword();
@@ -37,6 +37,7 @@ public class InstructionsServer {
                         StatusMsg statusMsg = new StatusMsg(0, "Login successfull");
                         user.changeLogging(true);
                         objectOutputStream.writeObject(statusMsg);
+                        return username;
                     } else {
                         StatusMsg statusMsg = new StatusMsg(1, "Already logged in");
                         objectOutputStream.writeObject(statusMsg);
@@ -52,9 +53,10 @@ public class InstructionsServer {
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
         }
+        return null;
     }
 
-    public static void handleLogout(Messaggio msg, UsrDatabase db, ObjectOutputStream objectOutputStream) {
+    public static Boolean handleLogout(Messaggio msg, UsrDatabase db, ObjectOutputStream objectOutputStream) {
         LogoutMsg logoutMsg = (LogoutMsg) msg;
         String username = logoutMsg.getUsername();
         try{
@@ -63,6 +65,7 @@ public class InstructionsServer {
                 user.changeLogging(false);
                 StatusMsg statusMsg = new StatusMsg(0, "Logout successfull");
                 objectOutputStream.writeObject(statusMsg);
+                return true;
             } else {
                 StatusMsg statusMsg = new StatusMsg(1, "Username not found");
                 objectOutputStream.writeObject(statusMsg);
@@ -70,6 +73,7 @@ public class InstructionsServer {
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
         }
+        return false;
     }
 
 }

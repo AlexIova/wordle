@@ -4,6 +4,7 @@ public class ClientHandler implements Runnable {
     private InputStream inputStream;
     private OutputStream outputStream;
     private UsrDatabase db;
+    String usrLogged = null;
 
     public ClientHandler(InputStream in, OutputStream out, UsrDatabase db) {
         this.inputStream = in;
@@ -25,10 +26,12 @@ public class ClientHandler implements Runnable {
                         System.out.println("Registration finished!");
                         break;
                     case LOGIN:
-                        InstructionsServer.handleLogin(msg, db, objectOutputStream);
+                        usrLogged = InstructionsServer.handleLogin(msg, db, objectOutputStream);
                         break;
                     case LOGOUT:
-                        InstructionsServer.handleLogout(msg, db, objectOutputStream);
+                        if(InstructionsServer.handleLogout(msg, db, objectOutputStream)){
+                            usrLogged = null;
+                        }
                         break;
                     default:
                         throw new WrongMessageException("Invalid message type");
