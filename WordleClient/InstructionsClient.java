@@ -138,12 +138,13 @@ public class InstructionsClient {
     }
 
     private static void game(ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream, Scanner scanner, String username){
-        System.out.println("WE ARE READY!");
+        System.out.println("You are now playing wordle:");
         Boolean end = false;
         String guess = null;
         Messaggio res = null;
         List<String> log = new ArrayList<String>();
         while(!end){
+            System.out.print("> ");
             guess = scanner.nextLine();
             PlayMsg guessMsg = new PlayMsg(username, guess);
             log.add(guess);
@@ -161,6 +162,7 @@ public class InstructionsClient {
                         for(String s : log){
                             System.out.println(s);
                         }
+                        System.out.println("\n---------------");
                         break;
                     case 1:             // Game won
                         System.out.println("Game won");
