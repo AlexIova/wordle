@@ -19,6 +19,7 @@ public class WordleClientMain {
         Properties properties = initProp(pathProp);
         String SERVER_ADDRESS = properties.getProperty("SERVER_ADDRESS");
         int SERVER_PORT = Integer.parseInt(properties.getProperty("SERVER_PORT"));
+        String username = null;         // if username=null it's almost like logged out
         try (Socket clientSocket = new Socket(SERVER_ADDRESS, SERVER_PORT)) {
             InputStream inputStream = clientSocket.getInputStream();
             OutputStream outputStream = clientSocket.getOutputStream();
@@ -37,14 +38,17 @@ public class WordleClientMain {
                             break;
                         case 2:
                             System.out.println("Initiating login handle");
-                            InstructionsClient.handleLogin(objectOutputStream, objectInputStream, scanner);
+                            username = InstructionsClient.handleLogin(objectOutputStream, objectInputStream, scanner);
                             break;
                         case 3:
                             System.out.println("Initiating logout handle");
-                            InstructionsClient.handleLogout(objectOutputStream, objectInputStream, scanner);
+                            if(InstructionsClient.handleLogout(objectOutputStream, objectInputStream, scanner)){
+                                username = null;
+                            }
                             break;
                         case 4:
                             System.out.println("Play");
+                            InstructionsClient.playWordle(objectOutputStream, objectInputStream, scanner, username);
                             break;
                         case 5:
                             System.out.println("sendMeStatistics");
