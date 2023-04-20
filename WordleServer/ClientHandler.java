@@ -1,18 +1,21 @@
 import java.io.*;
 
 public class ClientHandler implements Runnable {
+
     private InputStream inputStream;
     private OutputStream outputStream;
     private UsrDatabase db;
     private WordPicker wp;
+    private GameDatabase gameDB;
     
     private String usrLogged = null;
 
-    public ClientHandler(InputStream in, OutputStream out, UsrDatabase db, WordPicker wp) {
+    public ClientHandler(InputStream in, OutputStream out, UsrDatabase db, GameDatabase gameDB, WordPicker wp) {
         this.inputStream = in;
         this.outputStream = out;
         this.db = db;
         this.wp = wp;
+        this.gameDB = gameDB;
     }
 
     @Override
@@ -38,7 +41,7 @@ public class ClientHandler implements Runnable {
                         break;
                     case PLAY:
                         if(db.usrExist(usrLogged) && db.getUser(usrLogged).isLogged()){
-                            InstructionsServer.handlePlay(msg, db, objectOutputStream, objectInputStream, wp);
+                            InstructionsServer.handlePlay(msg, db, gameDB, objectOutputStream, objectInputStream, wp);
                         }
                         break;
                     default:

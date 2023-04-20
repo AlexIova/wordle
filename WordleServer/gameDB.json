@@ -1,0 +1,22 @@
+{
+  "games": [
+    {
+      "username": "poppi",
+      "partite": [
+        {
+          "gameMatrix": [
+            "XXXX?XXX?X",
+            "?XXX?XX??X",
+            "XXXX?XX?+X",
+            "?XXX?XX?+X",
+            "+?XX?XX?X?",
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 6,
+          "secretWord": "amphichrom"
+        }
+      ]
+    }
+  ]
+}
