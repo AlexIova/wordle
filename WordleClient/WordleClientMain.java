@@ -19,6 +19,16 @@ public class WordleClientMain {
         Properties properties = initProp(pathProp);
         String SERVER_ADDRESS = properties.getProperty("SERVER_ADDRESS");
         int SERVER_PORT = Integer.parseInt(properties.getProperty("SERVER_PORT"));
+        String MC_ADDR = properties.getProperty("MC_ADDR");
+        int MC_CLIENT_PORT = Integer.parseInt(properties.getProperty("MC_CLIENT_PORT"));
+
+        /* Start listening MC thread */
+        NotificheDB nDB = new NotificheDB();
+        try {
+            McListenerThread mcListenerThread = new McListenerThread(MC_ADDR, MC_CLIENT_PORT, nDB);
+            mcListenerThread.run();
+        } catch (IOException e) { e.printStackTrace(); }
+
         String username = null;         // if username=null it's almost like logged out
         try (Socket clientSocket = new Socket(SERVER_ADDRESS, SERVER_PORT)) {
             InputStream inputStream = clientSocket.getInputStream();

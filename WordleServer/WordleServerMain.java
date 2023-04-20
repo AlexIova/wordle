@@ -36,7 +36,7 @@ public class WordleServerMain {
         int time = Integer.parseInt(properties.getProperty("TIME_WORD"));
         String pathWords = properties.getProperty("PATH_WORDS_DB");
         WordPicker wp = new WordPicker(pathWords);
-        threadPool.execute(new ChangeThread(time, wp));        
+        threadPool.execute(new ChangeThread(time, wp));      
 
         /* Take incoming connections */
         try (ServerSocket serverSocket = new ServerSocket(SERVER_PORT)) {
