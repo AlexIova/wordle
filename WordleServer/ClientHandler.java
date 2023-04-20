@@ -1,4 +1,6 @@
 import java.io.*;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 
 public class ClientHandler implements Runnable {
 
@@ -7,15 +9,21 @@ public class ClientHandler implements Runnable {
     private UsrDatabase db;
     private WordPicker wp;
     private GameDatabase gameDB;
+    private DatagramSocket dgSock;
+    private InetAddress mcAddr;
+    private int MC_SERVER_PORT;
     
     private String usrLogged = null;
 
-    public ClientHandler(InputStream in, OutputStream out, UsrDatabase db, GameDatabase gameDB, WordPicker wp) {
+    public ClientHandler(InputStream in, OutputStream out, UsrDatabase db, GameDatabase gameDB, WordPicker wp, DatagramSocket dgSock, InetAddress mcAddr, int MC_SERVER_PORT) {
         this.inputStream = in;
         this.outputStream = out;
         this.db = db;
         this.wp = wp;
         this.gameDB = gameDB;
+        this.dgSock = dgSock;
+        this.mcAddr = mcAddr;
+        this.MC_SERVER_PORT = MC_SERVER_PORT;
     }
 
     @Override
@@ -47,6 +55,11 @@ public class ClientHandler implements Runnable {
                     case REQ_STAT:
                         if(db.usrExist(usrLogged) && db.getUser(usrLogged).isLogged()){
                             InstructionsServer.handleReqStat(msg, gameDB, objectOutputStream);
+                        }
+                        break;
+                    case SHARE:
+                        if(db.usrExist(usrLogged) && db.getUser(usrLogged).isLogged()){
+                            InstructionsServer.handleShare(msg, gameDB, db, objectOutputStream, dgSock, mcAddr, MC_SERVER_PORT);
                         }
                         break;
                     default:

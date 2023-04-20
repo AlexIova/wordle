@@ -294,6 +294,21 @@
       "username": "bott",
       "password": "bott",
       "logged": false
+    },
+    {
+      "username": "spr",
+      "password": "spr",
+      "logged": true
+    },
+    {
+      "username": "ast",
+      "password": "ast",
+      "logged": true
+    },
+    {
+      "username": "op",
+      "password": "op",
+      "logged": true
     }
   ]
 }
