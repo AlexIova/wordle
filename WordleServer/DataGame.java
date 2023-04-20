@@ -62,7 +62,9 @@ public class DataGame {
     public ArrayList<Integer> getGuessDistribution(){
         ArrayList<Integer> guessDistribution = new ArrayList<Integer>(Collections.nCopies(12, 0));
         for(Partita partita : partite){
-            guessDistribution.set(partita.getTentativo(), guessDistribution.get(partita.getTentativo()) + 1);
+            if(partita.getEsito()){
+                guessDistribution.set(partita.getTentativo(), guessDistribution.get(partita.getTentativo()) + 1);
+            }
         }
         return guessDistribution;
     }
