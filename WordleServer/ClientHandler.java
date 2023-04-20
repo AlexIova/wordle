@@ -44,6 +44,11 @@ public class ClientHandler implements Runnable {
                             InstructionsServer.handlePlay(msg, db, gameDB, objectOutputStream, objectInputStream, wp);
                         }
                         break;
+                    case REQ_STAT:
+                        if(db.usrExist(usrLogged) && db.getUser(usrLogged).isLogged()){
+                            InstructionsServer.handleReqStat(msg, gameDB, objectOutputStream);
+                        }
+                        break;
                     default:
                         throw new WrongMessageException("Invalid message type");
                 }

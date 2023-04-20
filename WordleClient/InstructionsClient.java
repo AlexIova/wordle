@@ -193,4 +193,20 @@ public class InstructionsClient {
         System.out.println("Fine gioco");
     }
 
+
+    public static void sendMeStatistics(ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream, String username) {
+        System.out.println("Now asking for statistics");
+        StatReqMsg statReqMsg = new StatReqMsg(username);
+        try {
+            objectOutputStream.writeObject(statReqMsg);
+            Messaggio res = (Messaggio) objectInputStream.readObject();
+            if(!(res.getType() == MessageType.STATISTICS)){
+                throw new WrongMessageException("Invalid reply");
+            }
+            StatisticMsg stats = (StatisticMsg) res;
+            System.out.println("Statistics: " + stats);
+        } catch (ClassNotFoundException | IOException | WrongMessageException e) { e.printStackTrace(); }
+                                            
+    }
+
 }

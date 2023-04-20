@@ -52,6 +52,7 @@ public class WordleClientMain {
                             break;
                         case 5:
                             System.out.println("sendMeStatistics");
+                            InstructionsClient.sendMeStatistics(objectOutputStream, objectInputStream, username);
                             break;
                         case 6:
                             System.out.println("share");
