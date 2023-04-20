@@ -19,11 +19,18 @@ public class WordleServerMain {
 
         /* Restore previous session from JSON file */
         String nameUsrDB = properties.getProperty("NAME_USR_DB");
-        UsrDatabase usrDB = restoreSession(nameUsrDB);
+        UsrDatabase usrDB = restoreUsrSession(nameUsrDB);
         assert(usrDB != null);
 
+        /* Restore user's game data from JSON file */
+        String nameGameData = properties.getProperty("NAME_GAME_DB");
+        GameDatabase gameDB = restoreGameSession(nameGameData);
+        assert(gameDB != null);
+
         /* Hook for saving before exiting */
-        Runtime.getRuntime().addShutdownHook(new Thread(new ExitHandler(usrDB)));
+        Runtime.getRuntime().addShutdownHook(
+                new Thread(new ExitHandler(usrDB, gameDB, nameUsrDB, nameGameData))
+            );
         
         /* Start thread for changing words periodically */
         int time = Integer.parseInt(properties.getProperty("TIME_WORD"));
@@ -60,7 +67,7 @@ public class WordleServerMain {
     }
 
     /* Restore previous session from JSON file */
-    private static UsrDatabase restoreSession(String nameUsrDB) {
+    private static UsrDatabase restoreUsrSession(String nameUsrDB) {
         UsrDatabase usrDB = new UsrDatabase();
         if (!new File(nameUsrDB).exists()) {
             return usrDB;
@@ -70,6 +77,20 @@ public class WordleServerMain {
             Gson gson = new Gson();
             usrDB = gson.fromJson(new FileReader(nameUsrDB), UsrDatabase.class);
             return usrDB;
+        } catch (IOException e) { e.printStackTrace(); }
+        return null;
+    }
+
+    private static GameDatabase restoreGameSession(String nameGameDB){
+        GameDatabase gameDB = new GameDatabase();
+        if (!new File(nameGameDB).exists()) {
+            return gameDB;
+        }
+        try {
+            System.out.println("Restoring session from: " + nameGameDB);
+            Gson gson = new Gson();
+            gameDB = gson.fromJson(new FileReader(nameGameDB), GameDatabase.class);
+            return gameDB;
         } catch (IOException e) { e.printStackTrace(); }
         return null;
     }
