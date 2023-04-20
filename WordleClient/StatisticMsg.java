@@ -60,6 +60,7 @@ public class StatisticMsg extends Messaggio{
         int i = 1;
         for(String g : guessDistribution){
             s += i + "|" + g + "\n";
+            i++;
         }
 
         return s;
