@@ -2,19 +2,19 @@ import java.util.*;
 
 public class NotificheDB {
     
-    private Queue<DataGame> queue;
+    private Queue<StatisticMsg> queue;
 
     public NotificheDB() {
         queue = new LinkedList<>();
     }
 
-    public void add(DataGame data) {
+    public void add(StatisticMsg msg) {
         synchronized(this){
-            queue.add(data);
+            queue.add(msg);
         }
     }
 
-    public DataGame get() {
+    public StatisticMsg pop() {
         synchronized(this){
             return queue.poll();
         }

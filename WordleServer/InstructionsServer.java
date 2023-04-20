@@ -1,4 +1,5 @@
 import java.io.*;
+import java.net.*;
 import java.util.*;
 
 public class InstructionsServer {
@@ -184,5 +185,41 @@ public class InstructionsServer {
             objectOutputStream.writeObject(statMsg);
         } catch (IOException e) { e.printStackTrace(); }
     }
+
+    public static void handleShare(Messaggio msg, GameDatabase gameDB, UsrDatabase usrDB, ObjectOutputStream objectOutputStream,
+            DatagramSocket dgSock, InetAddress mcAddr, int MC_SERVER_PORT) {
+
+        ShareMsg shareMsg = (ShareMsg) msg;
+        try{
+            if(!gameDB.usrExist(shareMsg.getUsername())){
+                StatusMsg statusMsg = new StatusMsg(1, "Username not found");
+                objectOutputStream.writeObject(statusMsg);
+                return;
+            }
+            if(!usrDB.getUser(shareMsg.getUsername()).isLogged()){
+                StatusMsg statusMsg = new StatusMsg(2, "Not logged in");
+                objectOutputStream.writeObject(statusMsg);
+                return;
+            }
+            DataGame dg = gameDB.getDataGame(shareMsg.getUsername());
+            StatisticMsg statMsg = new StatisticMsg(dg);
+            ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+            ObjectOutput objectOutput = new ObjectOutputStream(byteStream);
+            objectOutput.writeObject(statMsg);
+            objectOutput.close();
+            byte[] oggSerial = byteStream.toByteArray();
+
+            DatagramPacket dp = new DatagramPacket(oggSerial, oggSerial.length, mcAddr, MC_SERVER_PORT);
+            dgSock.send(dp);
+
+            StatusMsg statusMsg = new StatusMsg(0, "Dati condivisi");
+            objectOutputStream.writeObject(statusMsg);
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+
+    }
+
+
 
 }

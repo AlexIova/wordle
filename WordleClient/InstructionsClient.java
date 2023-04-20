@@ -209,4 +209,44 @@ public class InstructionsClient {
                                             
     }
 
+
+    public static void handleShare(ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream,
+            Scanner scanner, String username) {
+
+        ShareMsg shareMsg = new ShareMsg(username);
+        try {
+            objectOutputStream.writeObject(shareMsg);
+            System.out.println(shareMsg);
+            System.out.println("Share request sent");
+            Messaggio reply = (Messaggio) objectInputStream.readObject();
+            if (reply.getType() == MessageType.STATUS) {
+                StatusMsg statusMsg = (StatusMsg) reply;
+                switch (statusMsg.getCode()) {
+                    case 0:
+                        System.out.println("Share successfull");
+                        break;
+                    case 1:
+                        System.out.println("Username does not exist");
+                        break;
+                    case 2:
+                        System.out.println("User not logged in");
+                        break;
+                    default:
+                        System.out.println("Unknown error code");
+                        throw new WrongMessageException("Unknown error code");
+                }
+            }
+        } catch (ClassNotFoundException | IOException | WrongMessageException e) { e.printStackTrace(); }
+        
+        
+    }
+
+
+    public static void handleShowMeSgaring(NotificheDB nDB) {
+        System.out.println("Now asking for notification");
+        while(!nDB.isEmpty()){
+            System.out.println(nDB.pop());
+        }
+    }
+
 }

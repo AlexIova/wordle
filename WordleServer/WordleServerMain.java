@@ -16,6 +16,9 @@ public class WordleServerMain {
         int SERVER_PORT = Integer.parseInt(properties.getProperty("SERVER_PORT"));
         int THREAD_POOL_SIZE = Integer.parseInt(properties.getProperty("THREAD_POOL_SIZE"));
         ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
+        int MC_SERVER_PORT = Integer.parseInt(properties.getProperty("MC_SERVER_PORT"));
+        String MC_ADDR = properties.getProperty("MC_ADDR");
+
 
         /* Restore previous session from JSON file */
         String nameUsrDB = properties.getProperty("NAME_USR_DB");
@@ -39,14 +42,21 @@ public class WordleServerMain {
         threadPool.execute(new ChangeThread(time, wp));      
 
         /* Take incoming connections */
-        try (ServerSocket serverSocket = new ServerSocket(SERVER_PORT)) {
+        try (
+        ServerSocket serverSocket = new ServerSocket(SERVER_PORT);
+        DatagramSocket dgSock = new DatagramSocket() ) {
+            InetAddress mcAddr = InetAddress.getByName(MC_ADDR);
+            if (!mcAddr.isMulticastAddress()) {
+                throw new IllegalArgumentException(
+                "Indirizzo multicast non valido: " + mcAddr.getHostAddress());
+            }
             System.out.println("TCP Server started on port " + SERVER_PORT);
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("Connection accepted from " + clientSocket.getInetAddress().getHostAddress());
                 InputStream inputStream = clientSocket.getInputStream();
                 OutputStream outputStream = clientSocket.getOutputStream();
-                threadPool.execute(new ClientHandler(inputStream, outputStream, usrDB, gameDB, wp));
+                threadPool.execute(new ClientHandler(inputStream, outputStream, usrDB, gameDB, wp, dgSock, mcAddr, MC_SERVER_PORT));
             }
         } catch (IOException e) {
             System.err.println("Error starting TCP Server: " + e.getMessage());

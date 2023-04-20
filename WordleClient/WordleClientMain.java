@@ -26,7 +26,7 @@ public class WordleClientMain {
         NotificheDB nDB = new NotificheDB();
         try {
             McListenerThread mcListenerThread = new McListenerThread(MC_ADDR, MC_CLIENT_PORT, nDB);
-            mcListenerThread.run();
+            mcListenerThread.start();
         } catch (IOException e) { e.printStackTrace(); }
 
         String username = null;         // if username=null it's almost like logged out
@@ -66,9 +66,11 @@ public class WordleClientMain {
                             break;
                         case 6:
                             System.out.println("share");
+                            InstructionsClient.handleShare(objectOutputStream, objectInputStream, scanner, username);
                             break;
                         case 7:
                             System.out.println("showMeSharing");
+                            InstructionsClient.handleShowMeSgaring(nDB);
                             break;
                         case 8:
                             System.out.println("exit");

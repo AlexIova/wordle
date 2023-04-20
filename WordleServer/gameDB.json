@@ -138,6 +138,38 @@
           "secretWord": "prenominal"
         }
       ]
+    },
+    {
+      "username": "spr",
+      "partite": [
+        {
+          "gameMatrix": [
+            "??X?XXXXX?",
+            "X?X??X?XXX",
+            "X?X??X?XXX",
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 4,
+          "secretWord": "septicidal"
+        }
+      ]
+    },
+    {
+      "username": "op",
+      "partite": [
+        {
+          "gameMatrix": [
+            "X???XXXXXX",
+            "+???X?X?X?",
+            "X???X?X?X?",
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 4,
+          "secretWord": "genipapada"
+        }
+      ]
     }
   ]
 }

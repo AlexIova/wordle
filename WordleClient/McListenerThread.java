@@ -23,15 +23,9 @@ public class McListenerThread extends Thread {
             try {
                 socket.receive(packet);
                 ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(packet.getData()));
-                DataGame dg = (DataGame) iStream.readObject();
-                nDB.add(dg);
+                StatisticMsg msg = (StatisticMsg) iStream.readObject();
+                nDB.add(msg);
             } catch (IOException | ClassNotFoundException e) { e.printStackTrace(); }
-            finally {
-                try {
-                    socket.leaveGroup(group);
-                    socket.close();
-                } catch (IOException e) { e.printStackTrace(); }
-            }
         }
     }
 
