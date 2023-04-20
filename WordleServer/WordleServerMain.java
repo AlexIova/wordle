@@ -46,7 +46,7 @@ public class WordleServerMain {
                 System.out.println("Connection accepted from " + clientSocket.getInetAddress().getHostAddress());
                 InputStream inputStream = clientSocket.getInputStream();
                 OutputStream outputStream = clientSocket.getOutputStream();
-                threadPool.execute(new ClientHandler(inputStream, outputStream, usrDB, wp));
+                threadPool.execute(new ClientHandler(inputStream, outputStream, usrDB, gameDB, wp));
             }
         } catch (IOException e) {
             System.err.println("Error starting TCP Server: " + e.getMessage());

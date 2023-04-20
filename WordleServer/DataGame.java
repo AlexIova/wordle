@@ -55,11 +55,12 @@ public class DataGame {
                 streak = 0;
             }
         }
+        streakList.add(streak);
         return Collections.max(streakList);
     }
 
     public ArrayList<Integer> getGuessDistribution(){
-        ArrayList<Integer> guessDistribution = new ArrayList<Integer>(12);
+        ArrayList<Integer> guessDistribution = new ArrayList<Integer>(Collections.nCopies(12, 0));
         for(Partita partita : partite){
             guessDistribution.set(partita.getTentativo(), guessDistribution.get(partita.getTentativo()) + 1);
         }

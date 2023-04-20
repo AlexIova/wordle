@@ -244,6 +244,56 @@
       "username": "libro",
       "password": "antico",
       "logged": true
+    },
+    {
+      "username": "fucio",
+      "password": "criceto",
+      "logged": true
+    },
+    {
+      "username": "msi",
+      "password": "msi",
+      "logged": true
+    },
+    {
+      "username": "spruzzino",
+      "password": "spruzzino",
+      "logged": true
+    },
+    {
+      "username": "presa",
+      "password": "presa",
+      "logged": true
+    },
+    {
+      "username": "casco",
+      "password": "moto",
+      "logged": true
+    },
+    {
+      "username": "cavo",
+      "password": "cavo",
+      "logged": true
+    },
+    {
+      "username": "poppi",
+      "password": "poppi",
+      "logged": false
+    },
+    {
+      "username": "tav",
+      "password": "tav",
+      "logged": true
+    },
+    {
+      "username": "palo",
+      "password": "palo",
+      "logged": true
+    },
+    {
+      "username": "bott",
+      "password": "bott",
+      "logged": true
     }
   ]
 }

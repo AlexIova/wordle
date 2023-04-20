@@ -2,14 +2,14 @@ import java.util.*;
 
 public class Partita {
     
-    private List<String> gameMatrix = new ArrayList<String>();
+    private List<String> gameMatrix;
     private Boolean esito;
     private int tentativo = -1;
+    private String secretWord;
 
-    public Partita(List<String> matrix){
-        for(String row : matrix){
-            this.gameMatrix.add(row);
-        }
+    public Partita(List<String> matrix, String secretWord) {
+        this.secretWord = secretWord;
+        this.gameMatrix = matrix;
         this.esito = calcEsito(this.gameMatrix);
         if(this.esito){
             this.tentativo = calcTentativo(this.gameMatrix);
@@ -18,7 +18,7 @@ public class Partita {
 
     private Boolean calcEsito(List<String> matrix){
         for(String row: matrix){
-            if(row.equals("++++++++++++")){
+            if(row.equals("++++++++++")){
                 return true;
             }
         }
@@ -39,6 +39,10 @@ public class Partita {
     public int getTentativo(){
         return this.tentativo;
     }
-        
+
+    public String getSecretWord(){
+        return this.secretWord;
+    }
+
 }
 
