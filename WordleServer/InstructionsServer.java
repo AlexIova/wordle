@@ -154,8 +154,11 @@ public class InstructionsServer {
         Partita partita = new Partita(gameMatrix, secretWord);
         dg.addPartita(partita);
         gameDB.add(dg);
-        System.out.println(gameDB);
-        System.out.println("ECCOCI alla fine");
+        StatisticMsg statMsg = new StatisticMsg(dg);
+        System.out.println("Now sending stats...");
+        try {
+            objectOutputStream.writeObject(statMsg);
+        } catch (IOException e) { e.printStackTrace(); }
     }
 
     private static String buildRes(String secretWord, String guessedWord) {

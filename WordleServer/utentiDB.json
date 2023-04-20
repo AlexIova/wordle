@@ -279,6 +279,21 @@
       "username": "poppi",
       "password": "poppi",
       "logged": false
+    },
+    {
+      "username": "tav",
+      "password": "tav",
+      "logged": true
+    },
+    {
+      "username": "palo",
+      "password": "palo",
+      "logged": true
+    },
+    {
+      "username": "bott",
+      "password": "bott",
+      "logged": true
     }
   ]
 }

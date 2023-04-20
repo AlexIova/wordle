@@ -17,6 +17,127 @@
           "secretWord": "amphichrom"
         }
       ]
+    },
+    {
+      "username": "tav",
+      "partite": [
+        {
+          "gameMatrix": [
+            "X?X??X?XXX",
+            "++++++XXXX",
+            "X?XX??????",
+            "X?X???X??X",
+            "??XX??XXXX",
+            "XX?XX?+?++",
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 7,
+          "secretWord": "doctorally"
+        },
+        {
+          "gameMatrix": [
+            "?XX??XX+XX",
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 2,
+          "secretWord": "unpatented"
+        }
+      ]
+    },
+    {
+      "username": "tav",
+      "partite": [
+        {
+          "gameMatrix": [
+            "X?X??X?XXX",
+            "++++++XXXX",
+            "X?XX??????",
+            "X?X???X??X",
+            "??XX??XXXX",
+            "XX?XX?+?++",
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 7,
+          "secretWord": "doctorally"
+        },
+        {
+          "gameMatrix": [
+            "?XX??XX+XX",
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 2,
+          "secretWord": "unpatented"
+        }
+      ]
+    },
+    {
+      "username": "palo",
+      "partite": [
+        {
+          "gameMatrix": [
+            "X+XXX+X?XX",
+            "X+XXXXX?XX",
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 3,
+          "secretWord": "highflying"
+        }
+      ]
+    },
+    {
+      "username": "bott",
+      "partite": [
+        {
+          "gameMatrix": [
+            "+XXXXX?X?X",
+            "+??X???XXX",
+            "+??+X+????",
+            "+?+?XX????",
+            "+XXX+XXX??",
+            "XX???XX?XX",
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 7,
+          "secretWord": "prenominal"
+        },
+        {
+          "gameMatrix": [],
+          "esito": false,
+          "tentativo": -1,
+          "secretWord": "prenominal"
+        }
+      ]
+    },
+    {
+      "username": "bott",
+      "partite": [
+        {
+          "gameMatrix": [
+            "+XXXXX?X?X",
+            "+??X???XXX",
+            "+??+X+????",
+            "+?+?XX????",
+            "+XXX+XXX??",
+            "XX???XX?XX",
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 7,
+          "secretWord": "prenominal"
+        },
+        {
+          "gameMatrix": [],
+          "esito": false,
+          "tentativo": -1,
+          "secretWord": "prenominal"
+        }
+      ]
     }
   ]
 }

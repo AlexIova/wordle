@@ -182,6 +182,14 @@ public class InstructionsClient {
                 e.printStackTrace();
             }
         }
+        try {
+            res = (Messaggio) objectInputStream.readObject();
+            if(!(res.getType() == MessageType.STATISTICS)){
+                throw new WrongMessageException("Invalid reply");
+            }
+            StatisticMsg stats = (StatisticMsg) res;
+            System.out.println("Statistics: " + stats);
+        } catch (ClassNotFoundException | IOException | WrongMessageException e) { e.printStackTrace(); }
         System.out.println("Fine gioco");
     }
 
