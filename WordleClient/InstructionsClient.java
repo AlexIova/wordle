@@ -166,6 +166,7 @@ public class InstructionsClient {
                         break;
                     case 1:             // Game won
                         System.out.println("Game won");
+                        end = true;
                         break;
                     case 2:             // Word must be of 10 characters
                         System.out.println("Word must be of 10 characters");
