@@ -209,6 +209,41 @@
       "username": "ciccio",
       "password": "pasticcio",
       "logged": false
+    },
+    {
+      "username": "borraccia",
+      "password": "acqua",
+      "logged": false
+    },
+    {
+      "username": "gomma",
+      "password": "arabica",
+      "logged": true
+    },
+    {
+      "username": "gigi",
+      "password": "proietti",
+      "logged": true
+    },
+    {
+      "username": "ennio",
+      "password": "morricone",
+      "logged": true
+    },
+    {
+      "username": "cari",
+      "password": "catore",
+      "logged": true
+    },
+    {
+      "username": "sedia",
+      "password": "sgabello",
+      "logged": true
+    },
+    {
+      "username": "libro",
+      "password": "antico",
+      "logged": true
     }
   ]
 }

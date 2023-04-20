@@ -5,18 +5,34 @@ import com.google.gson.*;
 
 public class ExitHandler implements Runnable{
     
-    UsrDatabase db;
+    UsrDatabase usrDB;
+    GameDatabase gameDB;
+    String nameUsrDB;
+    String nameGameDB;
 
-    public ExitHandler(UsrDatabase db) {
-        this.db = db;
+    public ExitHandler(UsrDatabase usrDB, GameDatabase gameDB, String nameUsrDB, String nameGameDB) {
+        this.usrDB = usrDB;
+        this.gameDB = gameDB;
+        this.nameUsrDB = nameUsrDB;
+        this.nameGameDB = nameGameDB;
     }
 
     @Override
     public void run() {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String dbJson = gson.toJson(db);
-        try (FileWriter fileWriter = new FileWriter("./WordleServer/utentiDB.json")) {
-            fileWriter.write(dbJson);
+        // Write usr database
+        Gson gsonUsr = new GsonBuilder().setPrettyPrinting().create();
+        String usrDbJson = gsonUsr.toJson(usrDB);
+        try (FileWriter fileWriter = new FileWriter(nameUsrDB)) {
+            fileWriter.write(usrDbJson);
+            System.out.println("JSON successfully written to file.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Write game database
+        Gson gsonGame = new GsonBuilder().setPrettyPrinting().create();
+        String gameDbJson = gsonGame.toJson(gameDB);
+        try (FileWriter fileWriter = new FileWriter(nameGameDB)) {
+            fileWriter.write(gameDbJson);
             System.out.println("JSON successfully written to file.");
         } catch (IOException e) {
             e.printStackTrace();

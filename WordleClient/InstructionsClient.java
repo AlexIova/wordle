@@ -38,7 +38,7 @@ public class InstructionsClient {
     }
 
 
-    public static void handleLogin(ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream, Scanner scanner){
+    public static String handleLogin(ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream, Scanner scanner){
         System.out.println("You are now trying to login. \nPlease enter your username: ");
         String username = scanner.nextLine();
         System.out.println("Please enter your password: ");
@@ -54,7 +54,7 @@ public class InstructionsClient {
                 switch (statusMsg.getCode()) {
                     case 0:
                         System.out.println("Login successfull");
-                        break;
+                        return username;
                     case 1:
                         System.out.println("Already logged in");
                         break;
@@ -72,10 +72,11 @@ public class InstructionsClient {
                 throw new WrongMessageException("Invalid reply");
             }
         } catch (ClassNotFoundException | IOException | WrongMessageException e) { e.printStackTrace(); }
+        return username;
     }
 
 
-    public static void handleLogout(ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream, Scanner scanner){
+    public static Boolean handleLogout(ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream, Scanner scanner){
         System.out.println("You are now trying to logout. \nPlease enter your username: ");
         String username = scanner.nextLine();
         LogoutMsg logoutMsg = new LogoutMsg(username);
@@ -89,7 +90,7 @@ public class InstructionsClient {
                 switch (statusMsg.getCode()) {
                     case 0:
                         System.out.println("Logout successfull");
-                        break;
+                        return true;
                     case 1:
                         System.out.println("Not logged in");
                         break; 
@@ -101,5 +102,86 @@ public class InstructionsClient {
                 throw new WrongMessageException("Invalid reply");
             }
         } catch (ClassNotFoundException | IOException | WrongMessageException e) { e.printStackTrace(); }
+        return false;
     }
+
+
+    public static void playWordle(ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream, Scanner scanner, String username) {
+        System.out.println("You are now trying to play Wordle.");
+        PlayMsg playReq = new PlayMsg(username);
+        try {
+            objectOutputStream.writeObject(playReq);
+            System.out.println("playreq sent");
+            Messaggio reply = (Messaggio) objectInputStream.readObject();
+            if (reply.getType() == MessageType.STATUS) {
+                StatusMsg statusMsg = (StatusMsg) reply;
+                switch (statusMsg.getCode()) {
+                    case 0:
+                        System.out.println("We are ready to play!");
+                        game(objectOutputStream, objectInputStream, scanner, username);
+                        break;
+                    case 1:
+                        System.out.println("Username does not exist");
+                        break;
+                    case 2:
+                        System.out.println("User not logged in");
+                        break;
+                    default:
+                        System.out.println("Unknown error code");
+                        break;
+                }
+            } else {
+                throw new WrongMessageException("Invalid reply");
+            }
+        } catch (WrongMessageException | ClassNotFoundException | IOException e) { e.printStackTrace(); }
+
+    }
+
+    private static void game(ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream, Scanner scanner, String username){
+        System.out.println("You are now playing wordle:");
+        Boolean end = false;
+        String guess = null;
+        Messaggio res = null;
+        List<String> log = new ArrayList<String>();
+        while(!end){
+            System.out.print("> ");
+            guess = scanner.nextLine();
+            PlayMsg guessMsg = new PlayMsg(username, guess);
+            log.add(guess);
+            try {
+                objectOutputStream.writeObject(guessMsg);
+                res = (Messaggio) objectInputStream.readObject();
+                if(!(res.getType() == MessageType.GAME)){
+                    throw new WrongMessageException("Invalid reply");
+                }
+                GameMsg gameRes = (GameMsg) res;
+                switch (gameRes.getCode()) {
+                    case 0:             // All ok
+                        log.add(gameRes.getRes());
+                        System.out.println("\n---------------");
+                        for(String s : log){
+                            System.out.println(s);
+                        }
+                        System.out.println("\n---------------");
+                        break;
+                    case 1:             // Game won
+                        System.out.println("Game won");
+                        break;
+                    case 2:             // Word must be of 10 characters
+                        System.out.println("Word must be of 10 characters");
+                        break;
+                    case 3:             // Word not in dictionary
+                        System.out.println("Word not in dictionary");
+                        break;
+                    default:
+                        System.out.println("Unknown code");
+                        break;
+                }
+            } catch (ClassNotFoundException | IOException | WrongMessageException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println("Fine gioco");
+    }
+
 }

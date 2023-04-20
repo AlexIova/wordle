@@ -32,4 +32,8 @@ public class WordPicker {
         return secretWord;
     }
 
+    public boolean inDb(String word){
+        return wordlist.contains(word);
+    }
+
 }

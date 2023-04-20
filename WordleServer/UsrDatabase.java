@@ -3,7 +3,7 @@ import java.util.List;
 
 public class UsrDatabase {
 
-    private List<Utente> utenti = new ArrayList<>(); 
+    private List<Utente> utenti = new ArrayList<Utente>(); 
 
     public void add(Utente ut) {
         synchronized(this){
