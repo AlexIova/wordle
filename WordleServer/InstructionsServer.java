@@ -175,4 +175,14 @@ public class InstructionsServer {
         return result.toString();
     }
 
+    public static void handleReqStat(Messaggio msg, GameDatabase db, ObjectOutputStream objectOutputStream) {
+        StatReqMsg reqStatMsg = (StatReqMsg) msg;
+        String username = reqStatMsg.getUsername();
+        DataGame dg = db.getDataGame(username);
+        StatisticMsg statMsg = new StatisticMsg(dg);
+        try {
+            objectOutputStream.writeObject(statMsg);
+        } catch (IOException e) { e.printStackTrace(); }
+    }
+
 }

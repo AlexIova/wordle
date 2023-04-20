@@ -8,5 +8,6 @@ enum MessageType {
     SHOWSHARE,
     STATUS,
     STATISTICS,
-    RESULT
+    RESULT,
+    REQ_STAT
 }

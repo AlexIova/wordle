@@ -278,7 +278,7 @@
     {
       "username": "poppi",
       "password": "poppi",
-      "logged": false
+      "logged": true
     },
     {
       "username": "tav",
@@ -293,7 +293,7 @@
     {
       "username": "bott",
       "password": "bott",
-      "logged": true
+      "logged": false
     }
   ]
 }
