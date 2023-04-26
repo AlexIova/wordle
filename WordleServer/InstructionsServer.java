@@ -117,7 +117,6 @@ public class InstructionsServer {
         GameMsg resGame = null;
         String username = null;
         String row = null;
-        Boolean won = false;
         List<String> gameMatrix = new ArrayList<String>();
         System.out.println("SECRET WORD: " + secretWord);       // Just for debug, delete after
         while(!secretWord.equals(guessedWord) && iter < 12){
@@ -135,7 +134,6 @@ public class InstructionsServer {
                     resGame = new GameMsg("", 1);
                     row = buildRes(secretWord, guessedWord);
                     gameMatrix.add(row);
-                    won = true;
                     System.out.println("PLAYER WON!");
                 } else if(guessedWord.length() != 10){                              // Word must have 10 characters
                     resGame = new GameMsg("", 2);
