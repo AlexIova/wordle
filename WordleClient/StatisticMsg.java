@@ -59,7 +59,8 @@ public class StatisticMsg extends Messaggio{
                 + "\n" + "guess distribution:\n";
         int i = 1;
         for(String g : guessDistribution){
-            s += i + "|" + g + "\n";
+            s += String.format("%-2s | %s\n", i, g);
+            System.out.println(s);
             i++;
         }
 
