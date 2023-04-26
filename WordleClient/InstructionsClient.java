@@ -249,7 +249,7 @@ public class InstructionsClient {
     }
 
 
-    public static void handleShowMeSgaring(NotificheDB nDB) {
+    public static void handleShowMeSharing(NotificheDB nDB) {
         System.out.println("Now asking for notification");
         while(!nDB.isEmpty()){
             System.out.println(nDB.pop());

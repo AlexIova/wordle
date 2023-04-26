@@ -70,7 +70,7 @@ public class WordleClientMain {
                             break;
                         case 7:
                             System.out.println("showMeSharing");
-                            InstructionsClient.handleShowMeSgaring(nDB);
+                            InstructionsClient.handleShowMeSharing(nDB);
                             break;
                         case 8:
                             System.out.println("exit");
