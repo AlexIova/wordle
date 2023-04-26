@@ -94,6 +94,11 @@ public class InstructionsServer {
                 objectOutputStream.writeObject(statusMsg);
                 return;
             }
+            if (gameDB.getDataGame(username).alreadyPlayed(wp.getSecretWord())){
+                StatusMsg statusMsg = new StatusMsg(3, "You already played with this word");
+                objectOutputStream.writeObject(statusMsg);
+                return;
+            }
             StatusMsg statusMsg = new StatusMsg(0, "Play successfull");
             objectOutputStream.writeObject(statusMsg);
             playWordle(db, gameDB, objectOutputStream, objectInputStream, wp);

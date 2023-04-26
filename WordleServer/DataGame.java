@@ -69,4 +69,13 @@ public class DataGame {
         return guessDistribution;
     }
 
+    public Boolean alreadyPlayed(String word){
+        for(Partita partita : partite){
+            if(partita.getSecretWord().equals(word)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

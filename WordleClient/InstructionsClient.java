@@ -126,6 +126,9 @@ public class InstructionsClient {
                     case 2:
                         System.out.println("User not logged in");
                         break;
+                    case 3:
+                        System.out.println("Word already played try again later");
+                        break;
                     default:
                         System.out.println("Unknown error code");
                         break;
