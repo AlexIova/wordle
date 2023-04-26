@@ -177,6 +177,10 @@ public class InstructionsClient {
                     case 3:             // Word not in dictionary
                         System.out.println("Word not in dictionary");
                         break;
+                    case 4:
+                        System.out.println("Game lost");
+                        end = true;
+                        break;
                     default:
                         System.out.println("Unknown code");
                         break;
