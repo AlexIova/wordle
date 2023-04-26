@@ -105,6 +105,34 @@ public class InstructionsClient {
         return false;
     }
 
+    public static Boolean handleExit(ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream, Scanner scanner, String username){
+        System.out.println("Automatically logging out before exiting: ");
+        LogoutMsg logoutMsg = new LogoutMsg(username);
+        try {
+            objectOutputStream.writeObject(logoutMsg);
+            System.out.println(logoutMsg);
+            System.out.println("Logout request sent");
+            Messaggio reply = (Messaggio) objectInputStream.readObject();
+            if (reply.getType() == MessageType.STATUS) {
+                StatusMsg statusMsg = (StatusMsg) reply;
+                switch (statusMsg.getCode()) {
+                    case 0:
+                        System.out.println("Logout successfull");
+                        return true;
+                    case 1:
+                        System.out.println("Not logged in");
+                        break; 
+                    default:
+                        System.out.println("Unknown error code");
+                        break;
+                }
+            } else {
+                throw new WrongMessageException("Invalid reply");
+            }
+        } catch (ClassNotFoundException | IOException | WrongMessageException e) { e.printStackTrace(); }
+        return false;
+    }
+
 
     public static void playWordle(ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream, Scanner scanner, String username) {
         System.out.println("You are now trying to play Wordle.");

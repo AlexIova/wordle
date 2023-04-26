@@ -74,6 +74,12 @@ public class WordleClientMain {
                             break;
                         case 8:
                             System.out.println("exit");
+                            if(username != null){
+                                if(!InstructionsClient.handleExit(objectOutputStream, objectInputStream, scanner, username)){
+                                    continue;
+                                }
+                            }
+                            System.out.println("Now exiting");
                             objectInputStream.close();
                             inputStream.close();
                             scanner.close();
