@@ -27,7 +27,7 @@ public class Partita {
 
     private int calcTentativo(List<String> matrix){
         if(matrix.size() < 12){
-            return matrix.size();
+            return matrix.size() - 1;           // Last row is the completed one
         }
         return 12;
     }

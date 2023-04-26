@@ -283,7 +283,7 @@
     {
       "username": "tav",
       "password": "tav",
-      "logged": false
+      "logged": true
     },
     {
       "username": "palo",
@@ -309,6 +309,11 @@
       "username": "op",
       "password": "op",
       "logged": true
+    },
+    {
+      "username": "car",
+      "password": "car",
+      "logged": false
     }
   ]
 }

@@ -140,6 +140,22 @@
           "esito": true,
           "tentativo": 1,
           "secretWord": "digredient"
+        },
+        {
+          "gameMatrix": [
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 1,
+          "secretWord": "bowerwoman"
+        },
+        {
+          "gameMatrix": [
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 0,
+          "secretWord": "demiwivern"
         }
       ]
     },
@@ -1075,6 +1091,280 @@
           "esito": true,
           "tentativo": 1,
           "secretWord": "digredient"
+        }
+      ]
+    },
+    {
+      "username": "tav",
+      "partite": [
+        {
+          "gameMatrix": [
+            "X?X??X?XXX",
+            "++++++XXXX",
+            "X?XX??????",
+            "X?X???X??X",
+            "??XX??XXXX",
+            "XX?XX?+?++",
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 7,
+          "secretWord": "doctorally"
+        },
+        {
+          "gameMatrix": [
+            "?XX??XX+XX",
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 2,
+          "secretWord": "unpatented"
+        },
+        {
+          "gameMatrix": [
+            "?XXXXX?XX+",
+            "XX?X?XXXXX",
+            "?XXXXX?XX?",
+            "XXXX?XXXXX",
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 5,
+          "secretWord": "excludable"
+        },
+        {
+          "gameMatrix": [
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 1,
+          "secretWord": "grizzlyman"
+        },
+        {
+          "gameMatrix": [
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?"
+          ],
+          "esito": false,
+          "tentativo": -1,
+          "secretWord": "woodjobber"
+        },
+        {
+          "gameMatrix": [
+            "XXXX?XXXX?"
+          ],
+          "esito": false,
+          "tentativo": -1,
+          "secretWord": "anisocycle"
+        },
+        {
+          "gameMatrix": [
+            "X??XXX??XX",
+            "X??XXX??XX",
+            "X??XXX??XX",
+            "X??XXX??XX",
+            "X??XXX??XX",
+            "X??XXX??XX",
+            "X??XXX??XX",
+            "X??XXX??XX",
+            "X??XXX??XX",
+            "X??XXX??XX",
+            "X??XXX??XX"
+          ],
+          "esito": false,
+          "tentativo": -1,
+          "secretWord": "pantherish"
+        },
+        {
+          "gameMatrix": [
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 1,
+          "secretWord": "wanderjahr"
+        },
+        {
+          "gameMatrix": [
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 1,
+          "secretWord": "lipothymic"
+        },
+        {
+          "gameMatrix": [
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 1,
+          "secretWord": "puberulous"
+        },
+        {
+          "gameMatrix": [
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 1,
+          "secretWord": "digredient"
+        },
+        {
+          "gameMatrix": [
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 1,
+          "secretWord": "bowerwoman"
+        }
+      ]
+    },
+    {
+      "username": "tav",
+      "partite": [
+        {
+          "gameMatrix": [
+            "X?X??X?XXX",
+            "++++++XXXX",
+            "X?XX??????",
+            "X?X???X??X",
+            "??XX??XXXX",
+            "XX?XX?+?++",
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 7,
+          "secretWord": "doctorally"
+        },
+        {
+          "gameMatrix": [
+            "?XX??XX+XX",
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 2,
+          "secretWord": "unpatented"
+        },
+        {
+          "gameMatrix": [
+            "?XXXXX?XX+",
+            "XX?X?XXXXX",
+            "?XXXXX?XX?",
+            "XXXX?XXXXX",
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 5,
+          "secretWord": "excludable"
+        },
+        {
+          "gameMatrix": [
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 1,
+          "secretWord": "grizzlyman"
+        },
+        {
+          "gameMatrix": [
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?",
+            "XXXXXXXXX?"
+          ],
+          "esito": false,
+          "tentativo": -1,
+          "secretWord": "woodjobber"
+        },
+        {
+          "gameMatrix": [
+            "XXXX?XXXX?"
+          ],
+          "esito": false,
+          "tentativo": -1,
+          "secretWord": "anisocycle"
+        },
+        {
+          "gameMatrix": [
+            "X??XXX??XX",
+            "X??XXX??XX",
+            "X??XXX??XX",
+            "X??XXX??XX",
+            "X??XXX??XX",
+            "X??XXX??XX",
+            "X??XXX??XX",
+            "X??XXX??XX",
+            "X??XXX??XX",
+            "X??XXX??XX",
+            "X??XXX??XX"
+          ],
+          "esito": false,
+          "tentativo": -1,
+          "secretWord": "pantherish"
+        },
+        {
+          "gameMatrix": [
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 1,
+          "secretWord": "wanderjahr"
+        },
+        {
+          "gameMatrix": [
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 1,
+          "secretWord": "lipothymic"
+        },
+        {
+          "gameMatrix": [
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 1,
+          "secretWord": "puberulous"
+        },
+        {
+          "gameMatrix": [
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 1,
+          "secretWord": "digredient"
+        },
+        {
+          "gameMatrix": [
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 1,
+          "secretWord": "bowerwoman"
+        },
+        {
+          "gameMatrix": [
+            "++++++++++"
+          ],
+          "esito": true,
+          "tentativo": 0,
+          "secretWord": "demiwivern"
         }
       ]
     }
