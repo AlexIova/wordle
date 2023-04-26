@@ -7,6 +7,10 @@ public class StatReqMsg extends Messaggio{
         this.username = username;
     }
 
+    /**
+     * Returns the username associated with this object.
+     * @return The username.
+     */
     public String getUsername() {
         return username;
     }

@@ -14,12 +14,23 @@ public class PlayMsg extends Messaggio{
         super.setType(MessageType.PLAY);
     }
 
+    /**
+     * Returns the username associated with this object.
+     *
+     * @return the username
+     */
     public String getUsername() {
         return this.username;
     }
 
-    public String getGuessedWord(){
+    /**
+     * Returns the current guessed word.
+     *
+     * @return the current guessed word as a String.
+     */
+    public String getGuessedWord() {
         return this.guessedWord;
     }
+
 
 }

@@ -17,6 +17,13 @@ public class ExitHandler implements Runnable{
         this.nameGameDB = nameGameDB;
     }
 
+    /**
+     * Saves the user and game databases as JSON files.
+     *
+     * The user database is saved to a file with the name specified by the `nameUsrDB`
+     * variable, while the game database is saved to a file with the name specified by
+     * the `nameGameDB` variable.
+     */
     @Override
     public void run() {
         // Write usr database
@@ -24,7 +31,7 @@ public class ExitHandler implements Runnable{
         String usrDbJson = gsonUsr.toJson(usrDB);
         try (FileWriter fileWriter = new FileWriter(nameUsrDB)) {
             fileWriter.write(usrDbJson);
-            System.out.println("JSON successfully written to file.");
+            System.out.println("user JSON successfully written to file.");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -33,7 +40,7 @@ public class ExitHandler implements Runnable{
         String gameDbJson = gsonGame.toJson(gameDB);
         try (FileWriter fileWriter = new FileWriter(nameGameDB)) {
             fileWriter.write(gameDbJson);
-            System.out.println("JSON successfully written to file.");
+            System.out.println("game JSON successfully written to file.");
         } catch (IOException e) {
             e.printStackTrace();
         }
