@@ -2,6 +2,7 @@ import java.util.*;
 
 public class StatisticMsg extends Messaggio{
 
+    private String username;
     private int numPartite;
     private int percVinte;
     private int lastWinStreak;
@@ -10,6 +11,7 @@ public class StatisticMsg extends Messaggio{
     
     public StatisticMsg(DataGame dg){
         super.setType(MessageType.STATISTICS);
+        this.username = dg.getUsername();
         this.numPartite = dg.partiteGiocate();
         this.percVinte = dg.getPercentualeWin();
         this.lastWinStreak = dg.lastWinStreak();
@@ -50,9 +52,14 @@ public class StatisticMsg extends Messaggio{
     //     return guessDistribution;
     // }
 
+    public String getUsername() {
+        return username;
+    }
+
     @Override
     public String toString() {
-        String s = "numero partite: " + numPartite 
+        String s = "user: " + username
+                + "\n" + "numero partite: " + numPartite 
                 + "\n" + "percentuale vinte: " + percVinte 
                 + "\n" + "ultimo streak: " + lastWinStreak 
                 + "\n" + "longest streak: " + longestWinStreak 

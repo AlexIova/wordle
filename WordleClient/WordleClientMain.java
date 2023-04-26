@@ -70,7 +70,7 @@ public class WordleClientMain {
                             break;
                         case 7:
                             System.err.println("DEBUG Initiating showMeSharing handler");
-                            InstructionsClient.handleShowMeSharing(nDB);
+                            InstructionsClient.handleShowMeSharing(nDB, username);
                             break;
                         case 8:
                             System.err.println("DEBUG Initiating exit handler");

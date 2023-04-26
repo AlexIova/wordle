@@ -277,10 +277,13 @@ public class InstructionsClient {
     }
 
 
-    public static void handleShowMeSharing(NotificheDB nDB) {
+    public static void handleShowMeSharing(NotificheDB nDB, String username) {
         System.err.println("Now asking for notification");
         while(!nDB.isEmpty()){
-            System.out.println(nDB.pop());
+            StatisticMsg notif = nDB.pop();
+            if(!notif.getUsername().equals(username)){
+                System.out.println(notif);
+            }
         }
     }
 
