@@ -26,18 +26,29 @@ public class ClientHandler implements Runnable {
         this.MC_SERVER_PORT = MC_SERVER_PORT;
     }
 
+    /**
+     * This method runs the server and listens for incoming messages from clients.
+     * It handles each message according to its type and calls the appropriate
+     * method to handle the message and respond to the client.
+     */
     @Override
     public void run() {
         try {
+            // Create input and output streams for the server
             ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+
+            // Loop to listen for incoming messages
             while(true){
+                // Read the incoming message from the client
                 Messaggio msg = (Messaggio) objectInputStream.readObject();
-                System.out.println(msg);
+                System.err.println(msg);
+
+                // Handle the message based on its type
                 switch (msg.getType()) {
                     case REGISTER:
                         InstructionsServer.handleRegistration(msg, db, objectOutputStream);
-                        System.out.println("Registration finished!");
+                        System.err.println("Registration finished!");
                         break;
                     case LOGIN:
                         usrLogged = InstructionsServer.handleLogin(msg, db, objectOutputStream);

@@ -7,6 +7,11 @@ public class ShareMsg extends Messaggio{
         super.setType(MessageType.SHARE);
     }
 
+    /**
+     * Returns the username associated with this object.
+     * 
+     * @return the username as a String
+     */
     public String getUsername() {
         return this.username;
     }

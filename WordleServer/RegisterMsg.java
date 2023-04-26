@@ -9,10 +9,20 @@ public class RegisterMsg extends Messaggio {
         super.setType(MessageType.REGISTER);
     }
 
+    /**
+     * Returns the username associated with this object.
+     *
+     * @return the username
+     */
     public String getUsername() {
         return username;
     }
 
+
+    /**
+     * This method returns the password.
+     * @return The password as a String.
+     */
     public String getPassword() {
         return password;
     }

@@ -7,8 +7,14 @@ public class LogoutMsg extends Messaggio{
         super.setType(MessageType.LOGOUT);
     }
 
+    /**
+     * Returns the username associated with this object.
+     *
+     * @return the username
+     */
     public String getUsername() {
         return this.username;
     }
+
 
 }
