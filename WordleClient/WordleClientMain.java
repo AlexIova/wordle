@@ -37,46 +37,46 @@ public class WordleClientMain {
             ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
             try (Scanner scanner = new Scanner(System.in)) {
                 while(true){
-                    System.out.println("Lorem ipsum qui ci sono le tue opzioni:\n\t1. Register \n\t2. Login\n\t3. Logout\n\t4. Play\n\t5. sendMeStatistics \n\t6. share \n\t7. showMeSharing \n\t8. exit\n---------------------");
+                    System.out.println("Benvenuto in Wordle! Di seguito le opzioni per giocare:\n\t1. Register \n\t2. Login\n\t3. Logout\n\t4. Play\n\t5. sendMeStatistics \n\t6. share \n\t7. showMeSharing \n\t8. exit\n---------------------");
                     int option = scanner.nextInt();
                     scanner.nextLine();     // consuming the newline after the option
-                    System.out.println("option chosen: " + option);
+                    System.err.println("DEBUG option chosen:" + option);
                     switch (option) {
                         case 1:
-                            System.out.println("Initiating register handle");
+                            System.err.println("DEBUG Initiating register handle");
                             InstructionsClient.handleRegistration(objectOutputStream, objectInputStream, scanner);
                             break;
                         case 2:
-                            System.out.println("Initiating login handle");
+                            System.err.println("DEBUG Initiating login handle");
                             username = InstructionsClient.handleLogin(objectOutputStream, objectInputStream, scanner);
                             break;
                         case 3:
-                            System.out.println("Initiating logout handle");
+                            System.err.println("DEBUG Initiating logout handle");
                             if(InstructionsClient.handleLogout(objectOutputStream, objectInputStream, scanner)){
                                 username = null;
                             }
                             break;
                         case 4:
-                            System.out.println("Play");
+                            System.err.println("DEBUG Initiating play handler");
                             InstructionsClient.playWordle(objectOutputStream, objectInputStream, scanner, username);
                             break;
                         case 5:
-                            System.out.println("sendMeStatistics");
+                            System.err.println("DEBUG Initiating sendMeStatistics handler");
                             InstructionsClient.sendMeStatistics(objectOutputStream, objectInputStream, username);
                             break;
                         case 6:
-                            System.out.println("share");
+                            System.err.println("DEBUG Initiating share handler");
                             InstructionsClient.handleShare(objectOutputStream, objectInputStream, scanner, username);
                             break;
                         case 7:
-                            System.out.println("showMeSharing");
+                            System.err.println("DEBUG Initiating showMeSharing handler");
                             InstructionsClient.handleShowMeSharing(nDB);
                             break;
                         case 8:
-                            System.out.println("exit");
+                            System.err.println("DEBUG Initiating exit handler");
                             if(username != null){
                                 if(!InstructionsClient.handleExit(objectOutputStream, objectInputStream, scanner, username)){
-                                    continue;
+                                    break;
                                 }
                             }
                             System.out.println("Now exiting");

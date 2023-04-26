@@ -11,8 +11,8 @@ public class InstructionsClient {
         RegisterMsg registerMsg = new RegisterMsg(username, password);
         try {
             objectOutputStream.writeObject(registerMsg);
-            System.out.println(registerMsg);
-            System.out.println("Registration request sent");
+            System.err.println(registerMsg);
+            System.err.println("Registration request sent");
             Messaggio reply = (Messaggio) objectInputStream.readObject();
             if (reply.getType() == MessageType.STATUS) {
                 StatusMsg statusMsg = (StatusMsg) reply;
@@ -46,8 +46,8 @@ public class InstructionsClient {
         LoginMsg loginMsg = new LoginMsg(username, password);
         try {
             objectOutputStream.writeObject(loginMsg);
-            System.out.println(loginMsg);
-            System.out.println("Login request sent");
+            System.err.println(loginMsg);
+            System.err.println("Login request sent");
             Messaggio reply = (Messaggio) objectInputStream.readObject();
             if (reply.getType() == MessageType.STATUS) {
                 StatusMsg statusMsg = (StatusMsg) reply;
@@ -82,8 +82,8 @@ public class InstructionsClient {
         LogoutMsg logoutMsg = new LogoutMsg(username);
         try {
             objectOutputStream.writeObject(logoutMsg);
-            System.out.println(logoutMsg);
-            System.out.println("Logout request sent");
+            System.err.println(logoutMsg);
+            System.err.println("Logout request sent");
             Messaggio reply = (Messaggio) objectInputStream.readObject();
             if (reply.getType() == MessageType.STATUS) {
                 StatusMsg statusMsg = (StatusMsg) reply;
@@ -110,8 +110,8 @@ public class InstructionsClient {
         LogoutMsg logoutMsg = new LogoutMsg(username);
         try {
             objectOutputStream.writeObject(logoutMsg);
-            System.out.println(logoutMsg);
-            System.out.println("Logout request sent");
+            System.err.println(logoutMsg);
+            System.err.println("Logout request sent");
             Messaggio reply = (Messaggio) objectInputStream.readObject();
             if (reply.getType() == MessageType.STATUS) {
                 StatusMsg statusMsg = (StatusMsg) reply;
@@ -139,7 +139,7 @@ public class InstructionsClient {
         PlayMsg playReq = new PlayMsg(username);
         try {
             objectOutputStream.writeObject(playReq);
-            System.out.println("playreq sent");
+            System.err.println("playreq sent");
             Messaggio reply = (Messaggio) objectInputStream.readObject();
             if (reply.getType() == MessageType.STATUS) {
                 StatusMsg statusMsg = (StatusMsg) reply;
@@ -193,7 +193,7 @@ public class InstructionsClient {
                         for(String s : log){
                             System.out.println(s);
                         }
-                        System.out.println("\n---------------");
+                        System.out.println("---------------");
                         break;
                     case 1:             // Game won
                         System.out.println("Game won");
@@ -251,8 +251,8 @@ public class InstructionsClient {
         ShareMsg shareMsg = new ShareMsg(username);
         try {
             objectOutputStream.writeObject(shareMsg);
-            System.out.println(shareMsg);
-            System.out.println("Share request sent");
+            System.err.println(shareMsg);
+            System.err.println("Share request sent");
             Messaggio reply = (Messaggio) objectInputStream.readObject();
             if (reply.getType() == MessageType.STATUS) {
                 StatusMsg statusMsg = (StatusMsg) reply;
@@ -278,7 +278,7 @@ public class InstructionsClient {
 
 
     public static void handleShowMeSharing(NotificheDB nDB) {
-        System.out.println("Now asking for notification");
+        System.err.println("Now asking for notification");
         while(!nDB.isEmpty()){
             System.out.println(nDB.pop());
         }

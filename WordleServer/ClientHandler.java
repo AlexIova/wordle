@@ -33,11 +33,11 @@ public class ClientHandler implements Runnable {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
             while(true){
                 Messaggio msg = (Messaggio) objectInputStream.readObject();
-                System.out.println(msg);
+                System.err.println(msg);
                 switch (msg.getType()) {
                     case REGISTER:
                         InstructionsServer.handleRegistration(msg, db, objectOutputStream);
-                        System.out.println("Registration finished!");
+                        System.err.println("Registration finished!");
                         break;
                     case LOGIN:
                         usrLogged = InstructionsServer.handleLogin(msg, db, objectOutputStream);

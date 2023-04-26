@@ -50,10 +50,10 @@ public class WordleServerMain {
                 throw new IllegalArgumentException(
                 "Indirizzo multicast non valido: " + mcAddr.getHostAddress());
             }
-            System.out.println("TCP Server started on port " + SERVER_PORT);
+            System.err.println("TCP Server started on port " + SERVER_PORT);
             while (true) {
                 Socket clientSocket = serverSocket.accept();
-                System.out.println("Connection accepted from " + clientSocket.getInetAddress().getHostAddress());
+                System.err.println("Connection accepted from " + clientSocket.getInetAddress().getHostAddress());
                 InputStream inputStream = clientSocket.getInputStream();
                 OutputStream outputStream = clientSocket.getOutputStream();
                 threadPool.execute(new ClientHandler(inputStream, outputStream, usrDB, gameDB, wp, dgSock, mcAddr, MC_SERVER_PORT));
@@ -83,7 +83,7 @@ public class WordleServerMain {
             return usrDB;
         }
         try {
-            System.out.println("Restoring session from: " + nameUsrDB);
+            System.err.println("Restoring session from: " + nameUsrDB);
             Gson gson = new Gson();
             usrDB = gson.fromJson(new FileReader(nameUsrDB), UsrDatabase.class);
             return usrDB;
@@ -97,7 +97,7 @@ public class WordleServerMain {
             return gameDB;
         }
         try {
-            System.out.println("Restoring session from: " + nameGameDB);
+            System.err.println("Restoring session from: " + nameGameDB);
             Gson gson = new Gson();
             gameDB = gson.fromJson(new FileReader(nameGameDB), GameDatabase.class);
             return gameDB;
