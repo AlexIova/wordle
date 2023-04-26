@@ -74,6 +74,10 @@ public class WordleClientMain {
                             break;
                         case 8:
                             System.out.println("exit");
+                            objectInputStream.close();
+                            inputStream.close();
+                            scanner.close();
+                            System.exit(0);
                             break;
                         default:
                             System.out.println("Invalid option");
