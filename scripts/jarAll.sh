@@ -13,6 +13,7 @@ mkdir ../jars/server
 mv WordleServer.jar ../jars/server/
 cp server.properties ../jars/server/
 cp words.txt ../jars/server/
+
 make clean
 
 # Client jar
