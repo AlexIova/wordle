@@ -12,6 +12,7 @@ jar cvfm WordleServer.jar manifest.txt *.class ../gson-2.10.1.jar
 mkdir ../jars/server
 mv WordleServer.jar ../jars/server/
 cp server.properties ../jars/server/
+cp words.txt ../jars/server/
 make clean
 
 # Client jar
@@ -24,3 +25,5 @@ mkdir ../jars/client
 mv WordleClient.jar ../jars/client/
 cp client.properties ../jars/client/
 make clean
+
+# cp ../gson-2.10.1.jar ../jars/
