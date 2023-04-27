@@ -26,4 +26,4 @@ mv WordleClient.jar ../jars/client/
 cp client.properties ../jars/client/
 make clean
 
-# cp ../gson-2.10.1.jar ../jars/
+cp ../gson-2.10.1.jar ../jars/
