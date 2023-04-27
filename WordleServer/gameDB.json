@@ -1367,6 +1367,16 @@
           "secretWord": "demiwivern"
         }
       ]
+    },
+    {
+      "partite": [
+        {
+          "gameMatrix": [],
+          "esito": false,
+          "tentativo": -1,
+          "secretWord": "herbescent"
+        }
+      ]
     }
   ]
 }
