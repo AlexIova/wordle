@@ -1,8 +1,7 @@
 JFLAGS = -cp
 CLASSPATH = ../gson-2.10.1.jar:.
 JC = javac
-
-
+.SUFFIXES: .java .class
 .java.class:
 	$(JC) $(JFLAGS) $(CLASSPATH)  $*.java
 
