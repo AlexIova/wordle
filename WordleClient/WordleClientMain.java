@@ -79,7 +79,9 @@ public class WordleClientMain {
                             }
                             break;
                         case 7:
-                            InstructionsClient.handleShowMeSharing(nDB, username);
+                            if(username != null){
+                                InstructionsClient.handleShowMeSharing(nDB, username);
+                            }
                             break;
                         case 8:
                             if(username != null){
