@@ -7,7 +7,7 @@ import com.google.gson.*;
 
 public class WordleServerMain {
 
-    private static String pathProp = "./WordleServer/server.properties";
+    private static String pathProp = "./server.properties";
 
     /**
      * This is the main function that starts the server.
