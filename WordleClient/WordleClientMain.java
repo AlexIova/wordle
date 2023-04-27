@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class WordleClientMain {
 
-    private static String pathProp = "./client.properties";
+    private static String pathProp = "./WordleClient/client.properties";
 
     /**
      * Main function that runs the Wordle game client.
