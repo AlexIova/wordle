@@ -66,21 +66,29 @@ public class WordleClientMain {
                         case 4:
                             if(username != null){
                                 InstructionsClient.playWordle(objectOutputStream, objectInputStream, scanner, username);   
+                            } else {
+                                System.out.println("You are not logged in");
                             }
                             break;
                         case 5:
                             if(username != null){
                                 InstructionsClient.sendMeStatistics(objectOutputStream, objectInputStream, username);
+                            } else {
+                                System.out.println("You are not logged in");
                             }
                             break;
                         case 6:
                             if(username != null){
                                 InstructionsClient.handleShare(objectOutputStream, objectInputStream, scanner, username);
+                            } else {
+                                System.out.println("You are not logged in");
                             }
                             break;
                         case 7:
                             if(username != null){
                                 InstructionsClient.handleShowMeSharing(nDB, username);
+                            } else {
+                                System.out.println("You are not logged in");
                             }
                             break;
                         case 8:
