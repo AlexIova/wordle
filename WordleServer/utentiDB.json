@@ -314,6 +314,31 @@
       "username": "car",
       "password": "car",
       "logged": false
+    },
+    {
+      "username": "java",
+      "password": "java",
+      "logged": true
+    },
+    {
+      "username": "poli",
+      "password": "poli",
+      "logged": false
+    },
+    {
+      "username": "mecchi",
+      "password": "mecchi",
+      "logged": true
+    },
+    {
+      "username": "al",
+      "password": "al",
+      "logged": true
+    },
+    {
+      "username": "an",
+      "password": "an",
+      "logged": true
     }
   ]
 }

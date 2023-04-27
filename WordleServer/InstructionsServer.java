@@ -130,7 +130,8 @@ public static void handleRegistration(Messaggio msg, UsrDatabase db, ObjectOutpu
                 objectOutputStream.writeObject(statusMsg);
                 return;
             }
-            if (gameDB.getDataGame(username).alreadyPlayed(wp.getSecretWord())){
+            DataGame dataGame = gameDB.getDataGame(username);
+            if (dataGame != null && dataGame.alreadyPlayed(wp.getSecretWord())){        // the && short-circuits
                 StatusMsg statusMsg = new StatusMsg(3, "You already played with this word");
                 objectOutputStream.writeObject(statusMsg);
                 return;
