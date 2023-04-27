@@ -1,9 +1,7 @@
-JFLAGS = -cp
-CLASSPATH = ../gson-2.10.1.jar:.
 JC = javac
 .SUFFIXES: .java .class
 .java.class:
-	$(JC) $(JFLAGS) $(CLASSPATH)  $*.java
+	$(JC) $*.java
 
 
 # Program name
@@ -21,4 +19,4 @@ clean:
 
 # Not standard
 run:
-	java $(JFLAGS) $(CLASSPATH) $(PROGRAM_NAME)
+	java $(PROGRAM_NAME)
