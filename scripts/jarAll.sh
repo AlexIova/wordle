@@ -12,7 +12,7 @@ jar cvfm WordleServer.jar manifest.txt *.class ../gson-2.10.1.jar
 mkdir ../jars/server
 mv WordleServer.jar ../jars/server/
 cp server.properties ../jars/server/
-cp words.txt ../jars/server/
+cp words.txt ../jars/
 
 make clean
 
