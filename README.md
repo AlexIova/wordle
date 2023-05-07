@@ -75,6 +75,7 @@ I database contenenti i dati sugli utenti ed i dati dei giochi sono sincronizzat
 ### Wordlist
 
 La lista delle parole è contenuta all’interno della classe `WordPicker` la quale verrà modificata periodicamente dal thread che esegue la classe `ChangeThread`. Per questo motivo vengono sincronizzati per evitare race conditions i metodi che settano e leggono la parola segreta. Non si ha bisongo però di sincronizzare il metodo che controlla se una parola è nella lista delle parole valide in quanto la lista è statica nel tempo.
+
 ---
 
 # Client
