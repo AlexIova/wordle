@@ -20,8 +20,9 @@ Ho cercato di dividere quanto più possibile i diversi compiti ed aspetti del pr
 ### Configurazione
 
 Sia client che server hanno la possibilità di parametrizzare e modificare vari funzionamenti del programma, per quanto riguarda il client la configurazione riguarda solo aspetti di connettività al server (indirizzi e porte) mentre per quanto riguarda il server vi sono anche aspetti prestazionali (numero di thread) e funzionalità (path per file di supporto).
-
-Queste configurazioni sono racchiuse in due file `.properties` a cui client e server accederanno all’inizio della loro esecuzione per recuperare le opportune parametrizzazioni.
+  
+Queste configurazioni sono racchiuse in due file `.properties` a cui client e server accederanno all’inizio della loro esecuzione per recuperare le opportune parametrizzazioni. 
+Il programma si aspetta che questi file siano inseriti nella stessa cartella in cui avvine l'esecuzione del Client/Server.
 
 ---
 
@@ -74,7 +75,6 @@ I database contenenti i dati sugli utenti ed i dati dei giochi sono sincronizzat
 ### Wordlist
 
 La lista delle parole è contenuta all’interno della classe `WordPicker` la quale verrà modificata periodicamente dal thread che esegue la classe `ChangeThread`. Per questo motivo vengono sincronizzati per evitare race conditions i metodi che settano e leggono la parola segreta. Non si ha bisongo però di sincronizzare il metodo che controlla se una parola è nella lista delle parole valide in quanto la lista è statica nel tempo.
-
 ---
 
 # Client
@@ -84,27 +84,26 @@ La lista delle parole è contenuta all’interno della classe `WordPicker` la qu
 ### Database notifiche
 
 È presente per client una classe `NotificheDB` che rappresenta una coda di messaggi contenente le statistiche delle partite.
-Questa struttura dati si interfaccia con un thread che è sempre in ascolto per nuovi messaggi provenienti dal gruppo multicast nei modi descritti successivamente. 
+Questa struttura dati si interfaccia con un thread che è sempre in ascolto per nuovi messaggi provenienti dal gruppo multicast nei modi descritti successivamente.
 
 ## Concorrenza
 
 ### McListener Thread
-
 Questo thread runna perennemente la classe `McListenerThread`, la quale si unirà al gruppo multicast dato come parametro e starà perenemmente in ascolto per nuovi messaggi. Essa si occupa di ricevere i pacchetti UDP e poi castarli opportunamente come `StatisticMsg` opportuni per poi inserirli all’interno del database delle notifiche descritto sopra.
 
 ## Sincronizzazione
-
+  
 Le uniche race conditions che possono accadere nel codice del client sono quelle riguardo all’aggiunta e rimozione di nuovi messaggi all’interno del database delle notifiche. Per questo motivo la classe `NotificheDB` è sincronizzata sull’oggetto stesso mediante il costrutto `syncronized(this)` in ogni metodo.
 
 ---
-
+  
 # Compilazione ed esecuzione
-
+  
 ## Uso di script
-
+  
 Per facilitare il testing del programma sono presenti anche degli script in bash. Questi non vanno intesi come parte necessaria del programma ma solo come script utili per velocizzarne lo sviluppo.
 I più significativi di cui si riporta qui una breve spiegazione sono i seguenti:
-
+  
 ### runAll.sh
 
 Questo script permette di far partire client e server su due nuovi terminali diversi chiamando a loro volta script che eseguono singolarmente il server ed il client. L’esecuzione tra server e client è intervallata da una sleep in maniera tale da assicurarsi che il server sia completamente in esecuzione prima che il client provi a connettersi.
@@ -124,14 +123,16 @@ Nel caso si voglia fare una compilazione manuale da linea di comando i comandi s
 
 ```bash
 # Assumendo di essere nella cartella con tutto il codice del server
-javac -cp <path per gson-2.10.1.jar>:. *.java
+
+javac  -cp <path  per  gson-2.10.1.jar>:.  *.java
 ```
 
 *Per quanto riguarda il client*
 
 ```bash
 # Assumendo di essere nella cartella con tutto il codice del client
-javac *.java
+
+javac  *.java
 ```
 
 ### Creazione jar
@@ -144,17 +145,19 @@ Per la creazione dei jar si ha bisogno di un file `manifest.txt` in cui bisogna 
 
 ```bash
 # Si assume di essere nella cartella con tutti i file .class del server
-echo 'Main-Class: WordleServerMain' > manifest.txt
-echo 'Class-Path: ../gson-2.10.1.jar' >> manifest.txt
-jar cvfm WordleServer.jar manifest.txt *.class <path per gson-2.10.1.jar>
+
+echo  'Main-Class: WordleServerMain' > manifest.txt
+echo  'Class-Path: ../gson-2.10.1.jar' >> manifest.txt
+jar  cvfm  WordleServer.jar  manifest.txt  *.class <path  per  gson-2.10.1.jar>
 ```
 
 *Per quanto riguarda il jar del client*
 
 ```bash
 # Si assume di essere nella cartella con tutti i file .class del client
-echo 'Main-Class: WordleClientMain' > manifest.txt
-jar cvfm WordleClient.jar manifest.txt *.class
+
+echo  'Main-Class: WordleClientMain' > manifest.txt
+jar  cvfm  WordleClient.jar  manifest.txt  *.class
 ```
 
 ## Esecuzione
@@ -167,14 +170,16 @@ Per facilitare e velocizzare il processo di compilazione ho creato dei makefile 
 
 ```bash
 # Si assume di essere nella cartella con tutti i file .class del server
-java -cp <path per gson-2.10.1.jar> WordleServerMain
+
+java  -cp <path  per  gson-2.10.1.jar>:. WordleServerMain
 ```
 
 *Per quanto riguarda il client*
 
 ```bash
 # Si assume di essere nella cartella con tutti i file .class del client
-java WordleClientMain
+
+java  WordleClientMain
 ```
 
 ### Esecuzione da jar
@@ -184,14 +189,16 @@ java WordleClientMain
 ```bash
 # Si assume di essere nella cartella con il file WordleServer.jar
 # e la libreria gson-2.10.1.jar nella posizione indicata da manifest.txt
-java -jar ./WordleServer.jar
+
+java  -jar  ./WordleServer.jar
 ```
 
 *Per quanto riguarda il client*
 
 ```bash
 # Si assume di essere nella cartella con il file WordleClient.jar
-java -jar ./WordleClient.jar
+
+java  -jar  ./WordleClient.jar
 ```
 
 ---
